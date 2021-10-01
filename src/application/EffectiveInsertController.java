@@ -1,6 +1,10 @@
 package application;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
 
 public class EffectiveInsertController implements GenericController {
 	
@@ -44,6 +49,8 @@ public class EffectiveInsertController implements GenericController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+
+	@FXML Label ops_text;
 	
 	
 	public Stage launch(Stage s) {
@@ -80,20 +87,32 @@ public class EffectiveInsertController implements GenericController {
     }
 
     @FXML
-    void OnButtonInsertPressed(ActionEvent event) {
+    void OnButtonInsertPressed(ActionEvent event) throws Exception{
     	//TODO inserimento dati nel DB
+    	Double biceps, calfs, chest, forearms, height, hips, legs, waistline, weight ;
     	
-    	Double biceps    = Double.parseDouble(bicepsx.getText());      	
-    	Double calfs     = Double.parseDouble(calfsx.getText());      	
-    	Double chest    =  Double.parseDouble(chestx.getText());    	
-    	Double forearms  = Double.parseDouble(forearmsx.getText());
-    	Double height    = Double.parseDouble(heightx.getText());
-    	Double hips      = Double.parseDouble(hipsx.getText());
-    	Double legs      = Double.parseDouble(legsx.getText());
-    	Double waistline = Double.parseDouble(waistlinex.getText());
-    	Double weight    = Double.parseDouble(weightx.getText());
-    	       
-    	System.out.println(" Utente ha inserito: "
+    	try {
+	    	biceps    = Double.parseDouble(bicepsx.getText());      	
+	    	calfs     = Double.parseDouble(calfsx.getText());      	
+	    	chest    =  Double.parseDouble(chestx.getText());    	
+	    	forearms  = Double.parseDouble(forearmsx.getText());
+	    	height    = Double.parseDouble(heightx.getText());
+	    	hips      = Double.parseDouble(hipsx.getText());
+	    	legs      = Double.parseDouble(legsx.getText());
+	    	waistline = Double.parseDouble(waistlinex.getText());
+	    	weight    = Double.parseDouble(weightx.getText());
+    	}catch (Exception e) {
+			System.out.println("Problema importare dati: "+e);
+			ops_text.setVisible(true);
+			return;
+		}  
+    	ops_text.setVisible(false);
+    	
+    	String nome_user = UserData.getName();
+    	   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    	   LocalDateTime now = LocalDateTime.now();
+    	   Date d = Date.valueOf(dtf.format(now));
+    	System.out.println(" Utente "+ nome_user +" ha inserito: "
     			+ "\n biceps   =" + biceps   
     			+ "\n calfs    =" + calfs    
     			+ "\n chest    =" + chest    
@@ -103,7 +122,10 @@ public class EffectiveInsertController implements GenericController {
     			+ "\n legs     =" + legs     
     			+ "\n waistline=" + waistline
     			+ "\n weight   =" + weight   
-    			+ "");
+    			+ " il giorno = " + d 
+    			);
+    	GenericController g = new ProxyHomeController();
+		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
     }
 	
 }

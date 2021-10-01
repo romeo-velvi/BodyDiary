@@ -24,6 +24,7 @@
   <rowConstraints>
     <RowConstraints maxHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="-Infinity" prefHeight="80.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -78,7 +79,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
          </padding>
       </HBox>
-      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
          <children>
             <Label prefHeight="29.0" prefWidth="254.0" text="Weight">
                <font>
@@ -100,7 +101,7 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
          <children>
             <Label prefHeight="29.0" prefWidth="254.0" text="Height">
                <font>
@@ -122,7 +123,7 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
          <children>
             <Label prefHeight="29.0" prefWidth="254.0" text="Hips">
                <font>
@@ -144,7 +145,7 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
             <Label prefHeight="29.0" prefWidth="254.0" text="Legs">
                <font>
@@ -166,7 +167,7 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
             <Label prefHeight="29.0" prefWidth="254.0" text="Forearms">
                <font>
@@ -188,7 +189,7 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
             <Label prefHeight="29.0" prefWidth="254.0" text="Waistline">
                <font>
@@ -210,7 +211,7 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <children>
             <Label prefHeight="29.0" prefWidth="254.0" text="Chest">
                <font>
@@ -232,7 +233,7 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <children>
             <Label prefHeight="29.0" prefWidth="254.0" text="Biceps">
                <font>
@@ -254,7 +255,7 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
          <children>
             <Label prefHeight="29.0" prefWidth="254.0" text="Calfs">
                <font>
@@ -276,7 +277,7 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </padding>
       </VBox>
-      <HBox alignment="CENTER" GridPane.columnSpan="3" GridPane.rowIndex="5">
+      <HBox alignment="TOP_CENTER" GridPane.columnSpan="3" GridPane.rowIndex="6">
          <children>
             <Button mnemonicParsing="false" onAction="#OnButtonHomePressed1" prefHeight="40.0" prefWidth="250.0" style="-fx-font-size: 20; -fx-background-radius: 15; -fx-background-color: #d9534f;" text="Close" textFill="WHITE">
                <font>
@@ -302,5 +303,10 @@
             </Button>
          </children>
       </HBox>
+      <Label fx:id="ops_text" alignment="CENTER" contentDisplay="TOP" style="-fx-effect: dropshadow( one-pass-box , white, 40 , 0.0 , 0 , 0 );" text="Fields missed or incorrect" textFill="#f54c4c" visible="false" GridPane.columnSpan="3" GridPane.rowIndex="2">
+         <font>
+            <Font name="Malgun Gothic Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </GridPane>
