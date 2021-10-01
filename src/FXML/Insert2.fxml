@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EffectiveInsertController">
   <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="33.3" />
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="33.3" />
@@ -37,7 +37,7 @@
                   <Font name="Malgun Gothic Bold" size="25.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="64.0" text="Home" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" onMouseClicked="#OnButtonHomePressed" prefHeight="36.0" prefWidth="64.0" text="Home" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Malgun Gothic" size="15.0" />
                </font>
@@ -45,7 +45,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <ImageView fitHeight="30.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="38.0" onMouseClicked="#OnButtonHomePressed" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/home.png" />
                </image>
@@ -62,7 +62,7 @@
          <children>
             <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/Icon/notes.png" />
+                  <Image url="@../icons/notes.png" />
                </image>
             </ImageView>
             <Label alignment="TOP_CENTER" contentDisplay="TOP" text="Insert measurements">
@@ -80,14 +80,14 @@
       </HBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
          <children>
-            <Label prefHeight="29.0" prefWidth="254.0" text="Peso">
+            <Label prefHeight="29.0" prefWidth="254.0" text="Weight">
                <font>
                   <Font name="Malgun Gothic Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="weightx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text="kg">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -102,14 +102,14 @@
       </VBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
          <children>
-            <Label prefHeight="29.0" prefWidth="254.0" text="Altezza">
+            <Label prefHeight="29.0" prefWidth="254.0" text="Height">
                <font>
                   <Font name="Malgun Gothic Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="heightx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text="cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -124,14 +124,14 @@
       </VBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
          <children>
-            <Label prefHeight="29.0" prefWidth="254.0" text="Fianchi">
+            <Label prefHeight="29.0" prefWidth="254.0" text="Hips">
                <font>
                   <Font name="Malgun Gothic Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="hipsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text="cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -146,14 +146,14 @@
       </VBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Label prefHeight="29.0" prefWidth="254.0" text="Cosce">
+            <Label prefHeight="29.0" prefWidth="254.0" text="Legs">
                <font>
                   <Font name="Malgun Gothic Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="legsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text="cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -168,14 +168,14 @@
       </VBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <Label prefHeight="29.0" prefWidth="254.0" text="Avambracci">
+            <Label prefHeight="29.0" prefWidth="254.0" text="Forearms">
                <font>
                   <Font name="Malgun Gothic Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="forearmsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text="cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -190,14 +190,14 @@
       </VBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
-            <Label prefHeight="29.0" prefWidth="254.0" text="Vita">
+            <Label prefHeight="29.0" prefWidth="254.0" text="Waistline">
                <font>
                   <Font name="Malgun Gothic Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="waistlinex" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text="cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -212,14 +212,14 @@
       </VBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <Label prefHeight="29.0" prefWidth="254.0" text="Petto">
+            <Label prefHeight="29.0" prefWidth="254.0" text="Chest">
                <font>
                   <Font name="Malgun Gothic Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="chestx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text="cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -234,14 +234,14 @@
       </VBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <children>
-            <Label prefHeight="29.0" prefWidth="254.0" text="Bicipite">
+            <Label prefHeight="29.0" prefWidth="254.0" text="Biceps">
                <font>
                   <Font name="Malgun Gothic Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="bicepsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text="cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -256,14 +256,14 @@
       </VBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <children>
-            <Label prefHeight="29.0" prefWidth="254.0" text="Polpacci">
+            <Label prefHeight="29.0" prefWidth="254.0" text="Calfs">
                <font>
                   <Font name="Malgun Gothic Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="calfsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text="cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -278,7 +278,7 @@
       </VBox>
       <HBox alignment="CENTER" GridPane.columnSpan="3" GridPane.rowIndex="5">
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-font-size: 20; -fx-background-radius: 15; -fx-background-color: #d9534f;" text="Close" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#OnButtonHomePressed1" prefHeight="40.0" prefWidth="250.0" style="-fx-font-size: 20; -fx-background-radius: 15; -fx-background-color: #d9534f;" text="Close" textFill="WHITE">
                <font>
                   <Font name="Malgun Gothic" size="61.0" />
                </font>
@@ -289,7 +289,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-font-size: 20; -fx-background-radius: 15; -fx-background-color: #2196f3;" text="Insert" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#OnButtonInsertPressed" prefHeight="40.0" prefWidth="250.0" style="-fx-font-size: 20; -fx-background-radius: 15; -fx-background-color: #2196f3;" text="Insert" textFill="WHITE">
                <font>
                   <Font name="Malgun Gothic" size="61.0" />
                </font>
