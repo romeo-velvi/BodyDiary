@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -90,6 +91,7 @@ public class EffectiveInsertController implements GenericController {
     void OnButtonInsertPressed(ActionEvent event) throws Exception{
     	//TODO inserimento dati nel DB
     	Double biceps, calfs, chest, forearms, height, hips, legs, waistline, weight ;
+    	LocalDate date; DateTimeFormatter formatter; Date d;
     	
     	try {
 	    	biceps    = Double.parseDouble(bicepsx.getText());      	
@@ -101,6 +103,11 @@ public class EffectiveInsertController implements GenericController {
 	    	legs      = Double.parseDouble(legsx.getText());
 	    	waistline = Double.parseDouble(waistlinex.getText());
 	    	weight    = Double.parseDouble(weightx.getText());
+	    	date = LocalDate.now();
+			formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
+			String text = date.format(formatter);
+			LocalDate parsedDate = LocalDate.parse(text, formatter);
+	   	   	d = Date.valueOf(parsedDate);
     	}catch (Exception e) {
 			System.out.println("Problema importare dati: "+e);
 			ops_text.setVisible(true);
@@ -109,9 +116,6 @@ public class EffectiveInsertController implements GenericController {
     	ops_text.setVisible(false);
     	
     	String nome_user = UserData.getName();
-    	   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-    	   LocalDateTime now = LocalDateTime.now();
-    	   Date d = Date.valueOf(dtf.format(now));
     	System.out.println(" Utente "+ nome_user +" ha inserito: "
     			+ "\n biceps   =" + biceps   
     			+ "\n calfs    =" + calfs    
@@ -122,7 +126,7 @@ public class EffectiveInsertController implements GenericController {
     			+ "\n legs     =" + legs     
     			+ "\n waistline=" + waistline
     			+ "\n weight   =" + weight   
-    			+ " il giorno = " + d 
+    			+ "\n il giorno = " + d 
     			);
     	GenericController g = new ProxyHomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());

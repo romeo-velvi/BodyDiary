@@ -134,7 +134,6 @@ public class EffectiveGoalsController implements GenericController {
 		formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
 		String text = date.format(formatter);
 		LocalDate parsedDate = LocalDate.parse(text, formatter);
-   	   	System.out.println("now: "+ parsedDate);
    	   	dd = Date.valueOf(parsedDate);
 		}catch (Exception e) {
 			System.out.println("Errore goal: "+e);
