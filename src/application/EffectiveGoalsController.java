@@ -97,7 +97,17 @@ public class EffectiveGoalsController implements GenericController {
 		while (it.hasNext()) {
 			g= (Goal)it.next();
 			g.updateGoal(m.getMeasureByType(g.getTipo()));
-			s = g.getTipo()+"t"+g.getValue_atteso()+"\t"+m.getMeasureByType(g.getTipo())+"\t"+g.getStato();
+			
+			s = 	"\t"
+					+g.getTipo()
+					+"\t\t\t\t"
+					+g.getValue_atteso()
+					+"\t\t\t\t"
+					+m.getMeasureByType(g.getTipo())
+					+"\t\t\t\t"
+					+g.getStato()
+					+"\t";
+			
 			System.out.println(s);
 			goals_elem.add(s);
 		}

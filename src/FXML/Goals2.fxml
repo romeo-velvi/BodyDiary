@@ -101,7 +101,10 @@
          <children>
             <ScrollPane hbarPolicy="NEVER">
                <content>
-                  <ListView fx:id="list_goals" prefWidth="750.0" style="-fx-alignment: center;" />
+                  <ListView fx:id="list_goals" prefWidth="766.0" style="-fx-alignment: center; -fx-font-size: 18;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ListView>
                </content>
             </ScrollPane>
          </children>

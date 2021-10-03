@@ -26,10 +26,16 @@ public class ProxyStartController implements GenericController{
 	private void preload() throws InterruptedException {
 		System.out.println("Caricamento della pagina start");
 		Thread.sleep(3);
-		/*
+
 		// ELIMINAREEEEEEEEEEEEEEEEEEEEEEE QUANDO SI HA FINITO
-		DBdao db = new DerbydbClass();
+		startdbSAMPLE();
 		
+	}
+	
+	
+	public void startdbSAMPLE() {
+		try {
+		DBdao db = new DerbydbClass();
 		try {
 			db.deleteAllTable();
 		} catch (SQLException e) {
@@ -37,9 +43,11 @@ public class ProxyStartController implements GenericController{
 			return;
 		}
 		db.createTables();
-		populing(); */
+		populing();
+		} catch (Exception e) {
+			System.out.println("ERRORE PROXY CREATION: "+e);
+		}
 	}
-	
 	
 	public  void populing() {
 		DBdao db = new DerbydbClass();
