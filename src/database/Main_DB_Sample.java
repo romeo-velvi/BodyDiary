@@ -3,7 +3,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 /* TO TRY ON TERMINAL THE VARIOUS UPDATE 
-C:\Users\Velvi\eclipse-workspace\NewDERBYproject>ij
+C:\Users\Velvi\eclipse-workspace\JFX4project1>ij
 Versione ij 10.15
 ij> CONNECT 'jdbc:derby:C:\Users\Velvi\eclipse-workspace\JFX4project1\newDBderby;';
 ij> show tables;

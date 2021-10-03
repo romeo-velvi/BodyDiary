@@ -18,11 +18,11 @@ public abstract class DBdao {
 	
 	public abstract void createTables();
 	
-	public abstract void insertUserData(UserData ud);
+	public abstract Boolean insertUserData(UserData ud)throws SQLException;
 	
-	public abstract void insertUserMeasurement(Measurement mm);
+	public abstract Boolean insertUserMeasurement(Measurement mm) throws SQLException;
 	
-	public abstract void insertUserGoal(Goal gg);
+	public abstract Boolean insertUserGoal(Goal gg) throws SQLException;
 	
 	public abstract Boolean checkUser(String email, String pass);
 	

@@ -62,6 +62,7 @@ public class EffectiveHomeController implements GenericController {
 		scene = user_id_text.getScene();
 		// TODO foreach measurement, drow a line chart
 		SetLineChart();
+				
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -311,6 +312,7 @@ public class EffectiveHomeController implements GenericController {
 	}
 
 	public void OnButtonExitPressed(MouseEvent event) throws Exception{
+		UserData.erease();
 		GenericController g = new ProxyStartController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 		UserData.erease();

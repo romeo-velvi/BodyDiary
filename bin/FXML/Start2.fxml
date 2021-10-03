@@ -51,11 +51,22 @@
                         <Font name="Malgun Gothic Bold" size="30.0" />
                      </font>
                   </Label>
+                  <Label fx:id="ops_text" alignment="CENTER" contentDisplay="TOP" prefHeight="20.0" prefWidth="999.0" style="-fx-effect: dropshadow( one-pass-box , white , 40 , 0.0 , 0 , 0 );" text="Connection error to DataBase" textFill="#f54c4c" visible="false">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
+               <padding>
+                  <Insets top="50.0" />
+               </padding>
             </VBox>
             <HBox alignment="TOP_CENTER" prefHeight="223.0" prefWidth="800.0" GridPane.rowIndex="1">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnButtonLoginPressed" prefHeight="50.0" prefWidth="300.0" style="-fx-font-size: 25; -fx-background-radius: 20; -fx-background-color: #007BFF;" text="Log in" textFill="WHITE">
+                  <Button fx:id="login_button" mnemonicParsing="false" onAction="#OnButtonLoginPressed" prefHeight="50.0" prefWidth="300.0" style="-fx-font-size: 25; -fx-background-radius: 20; -fx-background-color: #007BFF;" text="Log in" textFill="WHITE">
                      <font>
                         <Font size="61.0" />
                      </font>
@@ -66,7 +77,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#OnButtonSingupPressed" prefHeight="50.0" prefWidth="300.0" style="-fx-font-size: 25; -fx-background-radius: 20; -fx-background-color: #007BFF;" text="Sing up" textFill="WHITE">
+                  <Button fx:id="singup_button" mnemonicParsing="false" onAction="#OnButtonSingupPressed" prefHeight="50.0" prefWidth="300.0" style="-fx-font-size: 25; -fx-background-radius: 20; -fx-background-color: #007BFF;" text="Sing up" textFill="WHITE">
                      <font>
                         <Font size="61.0" />
                      </font>

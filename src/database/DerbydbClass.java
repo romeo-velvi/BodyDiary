@@ -17,7 +17,8 @@ public class DerbydbClass extends DBdao{
 		try {
 			DerbydbClass.to_db = DriverManager.getConnection(DerbydbClass.path);
 		} catch (SQLException e) {
-			System.out.println("Problema connessione db: "+e);
+			System.out.println("Problema connessione BD: "+e);
+			return;
 		}
 		System.out.println("DB connection ok!");
 	}
@@ -50,7 +51,7 @@ public class DerbydbClass extends DBdao{
 	public void clearTable(String tablename) throws SQLException {
 		String query; 
 		query="DELETE FROM "+ tablename;
-		ExecuteQuery(query);
+		executeQuery(query);
 		System.out.println("Clear"+ tablename + "eseguito");
 	}
 	
@@ -59,28 +60,28 @@ public class DerbydbClass extends DBdao{
 		String query, tablename;
 		tablename = "USERDATA";
 		query="DROP TABLE "+tablename;
-		ExecuteQuery(query);
+		executeQuery(query);
 		System.out.println("DROP "+ tablename + " eseguito");
 		tablename = "USERMEASURE";
 		query="DROP TABLE "+tablename;
-		ExecuteQuery(query);
+		executeQuery(query);
 		System.out.println("DROP "+ tablename + " eseguito");
 		tablename = "USERGOALS";
 		query="DROP TABLE "+tablename;
-		ExecuteQuery(query);
+		executeQuery(query);
 		System.out.println("DROP "+ tablename + " eseguito");
 		} catch (Exception e) {
 			System.out.println("Problema cancellazione tabelle db: "+e);
 		}
 	}	
 	
-	private  Boolean ExecuteQuery(String query) throws SQLException {
+	private Boolean executeQuery(String query) throws SQLException {
 		// creating statements
 		Statement stmt = to_db.createStatement();
 		try {
 			stmt.executeUpdate(query);
 		} catch (SQLException e) {
-			System.out.println("Attenzione: "+e);
+			System.out.println("Problema caricaemnto query: "+e);
 			return false;
 		}
 		return true;
@@ -97,7 +98,7 @@ public class DerbydbClass extends DBdao{
 					+ "birth_date DATE NOT NULL"
 				+ ")";
 		try {
-			ExecuteQuery(sql);
+			executeQuery(sql);
 		} catch (SQLException e) {
 			System.out.println("sql create table UserData error");
 		}
@@ -118,7 +119,7 @@ public class DerbydbClass extends DBdao{
 					+ "calfs 		DOUBLE NOT NULL ,"
 				+ "PRIMARY KEY (id_measure))";
 		try {
-			ExecuteQuery(sql);
+			executeQuery(sql);
 		} catch (SQLException e) {
 			System.out.println("sql create table UserMeasure error");
 		}
@@ -133,13 +134,13 @@ public class DerbydbClass extends DBdao{
 					+ "PRIMARY KEY (id_goal)"
 				+ ")";
 		try {
-			ExecuteQuery(sql);
+			executeQuery(sql);
 		} catch (SQLException e) {
 			System.out.println("sql create table UserMeasure error");
 		}
 	}
 	
-	public void insertUserData(UserData ud) {
+	public Boolean insertUserData(UserData ud) throws SQLException {
 		String query="INSERT INTO UserData"
 				+ "(email,password,name,surname,gender,birth_date)"
 				+ "VALUES "
@@ -157,14 +158,15 @@ public class DerbydbClass extends DBdao{
 					+ud.getBirt_date()
 					+"'"
 				+")";
-		try {
-			ExecuteQuery(query);
-		} catch (SQLException e) {
-			System.out.println("Errore inserimento userdata: "+e);
+		
+		if(executeQuery(query)==false) {
+			System.out.println("Errore inserimento user data: ");
+			return false;
 		}
+		return true;
 	}
 	
-	public void insertUserMeasurement(Measurement mm) {
+	public Boolean insertUserMeasurement(Measurement mm) throws SQLException {
 		String query="INSERT INTO UserMeasure"
 				+ "("
 					+"email 	,"
@@ -207,14 +209,15 @@ public class DerbydbClass extends DBdao{
 					+ ","
 						+ mm.getCalfs()
 				+")";
-		try {
-			ExecuteQuery(query);
-		} catch (SQLException e) {
-			System.out.println("Errore inserimento user measurements: "+e);
+		
+		if(executeQuery(query)==false) {
+			System.out.println("Errore inserimento user measurements: ");
+			return false;
 		}
+		return true;
 	}
 	
-	public  void insertUserGoal(Goal gg) {
+	public  Boolean insertUserGoal(Goal gg) throws SQLException {
 		String query="INSERT INTO UserGoals"
 				+ "(email,date,type,goal)"
 				+ "VALUES "
@@ -227,11 +230,11 @@ public class DerbydbClass extends DBdao{
 					+"',"
 					+gg.getValue_atteso()
 				+")";
-		try {
-			ExecuteQuery(query);
-		} catch (SQLException e) {
-			System.out.println("Errore inserimento userdata: "+e);
+		if(executeQuery(query)==false) {
+			System.out.println("Errore inserimento user goals: ");
+			return false;
 		}
+		return true;
 	}
 	
 	public Boolean checkUser(String email, String pass) {
