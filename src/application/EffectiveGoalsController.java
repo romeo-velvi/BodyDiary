@@ -1,7 +1,8 @@
 package application;
-
+import database.*;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -40,7 +42,8 @@ public class EffectiveGoalsController implements GenericController {
 	@FXML 
 	ListView<String> list_goals;
     
-    
+	DBdao db = new DerbydbClass();
+	
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -65,31 +68,52 @@ public class EffectiveGoalsController implements GenericController {
     	
     	loadChoiceBox();
     	
-    	loadListGoals();
-    	
-    	//TODO connessione db -> prendere goals -> controllare stato :
-    	// stato = 1 -> riuscito
-    	// stato = 2 -> non riuscito
-    	// stato = 0 -> SI DEVE CONTROLLARE:
-    		// se data_scadenza < data_oggi: stato -> in lavorazione
-    		// se data_scandenza > data_oggi: -> non riuscito ; stato =2
-    		// se data_obiettivo == data_oggi && se misura == misura_goal -> riucito ; stato =1
-    			//altrimenti stato: non riuscito
-    	//TODO ogni controllo di stato comporta un aggiornamento
+    	try {
+			loadListGoals();
+		} catch (SQLException e) {
+			System.out.println("Errore generare lista goals: "+e);
+		}
+
     }
 	
-	private void loadListGoals() {
-		ObservableList<String> goals_elem = FXCollections.observableArrayList();
+	private void loadListGoals() throws SQLException {
 		
-		Goal g1 =null,g2=null,g3=null,g4=null,g5=null,g6=null,g7=null;
+		list_goals.getItems().clear();
+		ObservableList<String> goals_elem = FXCollections.observableArrayList();
+		goals_elem.removeAll(goals_elem);
+		
+		DBdao db = new DerbydbClass();
+    	database.Iterator it = null;
+    	try {
+			it = db.retreiveGoal(UserData.getInstance().getMail());
+		} catch (SQLException e) {
+			System.out.println("Errore recezione goals: "+e);
+			return;
+		}
+    	
+    	Measurement m = db.getLastMeasurement(UserData.getInstance().getMail());
+    	
+    	Goal g; String s;
+		while (it.hasNext()) {
+			g= (Goal)it.next();
+			g.updateGoal(m.getMeasureByType(g.getTipo()));
+			s = g.getTipo()+"t"+g.getValue_atteso()+"\t"+m.getMeasureByType(g.getTipo())+"\t"+g.getStato();
+			System.out.println(s);
+			goals_elem.add(s);
+		}
+		
+		list_goals.getItems().addAll(goals_elem);
+		
+		/*
+		Goal_old g1 =null,g2=null,g3=null,g4=null,g5=null,g6=null,g7=null;
 		try {
-			g1 = new Goal("biceps", Date.valueOf("2021-05-01"), 11.43  , 112.43);
-			g2 = new Goal("calfs", Date.valueOf("2021-06-01"), 12.43  , 156.43);
-			g3 = new Goal("height", Date.valueOf("2021-07-01"), 14.43 , 17.43);
-			g4 = new Goal("legs", Date.valueOf("2021-08-01"), 15.43 , 137.43);
-			g5 = new Goal("biceps", Date.valueOf("2021-08-01"), 17.43 , 17.43);
-			g6 = new Goal("hips", Date.valueOf("2021-05-01"), 11.43 , 17.43);
-			g7 = new Goal("weight", Date.valueOf("2021-09-01"), 111.43 , 111.43);
+			g1 = new Goal_old("biceps", Date.valueOf("2021-05-01"), 11.43  , 112.43);
+			g2 = new Goal_old("calfs", Date.valueOf("2021-06-01"), 12.43  , 156.43);
+			g3 = new Goal_old("height", Date.valueOf("2021-07-01"), 14.43 , 17.43);
+			g4 = new Goal_old("legs", Date.valueOf("2021-08-01"), 15.43 , 137.43);
+			g5 = new Goal_old("biceps", Date.valueOf("2021-08-01"), 17.43 , 17.43);
+			g6 = new Goal_old("hips", Date.valueOf("2021-05-01"), 11.43 , 17.43);
+			g7 = new Goal_old("weight", Date.valueOf("2021-09-01"), 111.43 , 111.43);
 		}
 		catch (Exception e) {
 			System.out.println("problem set list: "+e);
@@ -104,45 +128,55 @@ public class EffectiveGoalsController implements GenericController {
 		goals_elem.add(g5.toString());
 		goals_elem.add(g6.toString());
 		goals_elem.add(g7.toString());
-				
 		list_goals.getItems().addAll(goals_elem);
+		*/	
+		
 	}
 	
 	private void loadChoiceBox() {
+		/* 
+		 * Double weight, Double legs, 
+		 * Double chest, Double height, 
+		 * Double forearms, Double biceps
+		 * Double hips, Double waistline, 
+		 * Double calfs, Date d	
+		 */	
 		measure.removeAll(measure);
 		measure.addAll(
-				"biceps",
-				"calfs",
-				"chest",
-				"forearms",
-				"height",
-				"hips",
+				"weight",
 				"legs",
+				"chest",
+				"height",
+				"forearms",
+				"biceps",
+				"hips",
 				"waistline",
-				"weight"
+				"calfs"
 				);
     	choice_measure.setItems(measure);
 	}
 	
 	
 	public void OnButtonAddPressed(MouseEvent event) throws Exception {
-		String type; Double mm; DateTimeFormatter formatter; LocalDate date; Date dd;
+		Goal ng = null;
+		String type; Double x; Date dd;
 		try {
-		type = choice_measure.getValue();
-		mm = Double.parseDouble(goals_value.getText());
-		date = LocalDate.now();
-		formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
-		String text = date.format(formatter);
-		LocalDate parsedDate = LocalDate.parse(text, formatter);
-   	   	dd = Date.valueOf(parsedDate);
+			type = choice_measure.getValue();
+			x = Double.parseDouble(goals_value.getText());
+			dd = Goal.getCurrentTime();
 		}catch (Exception e) {
 			System.out.println("Errore goal: "+e);
 			ops_text.setVisible(true);
 			return;
 		}
 		ops_text.setVisible(false);
-		System.out.println("l'utente "+UserData.getName()+" in data "+ dd + " ha impostato "
-		   	   	+ "di raggiungere " + mm + " per " + type);
+		
+		ng = new Goal(UserData.getInstance().getMail(), type, dd, x);
+		this.db.insertUserGoal(ng);
+		
+		System.out.println("l'utente "+UserData.getInstance().getName()+" in data "+ dd + " ha impostato "
+		   	   	+ "di raggiungere " + x + " per " + type);
+		loadListGoals();
 	}
 	
 	public void OnButtonHomePressed(MouseEvent event) throws Exception {

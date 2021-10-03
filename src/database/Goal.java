@@ -11,42 +11,8 @@ public class Goal {
 	private Double value_atteso;
 	private String stato;
 	
-	public void updateGoal(Measurement last) {
-		Double latest = null;
-		switch (tipo) {
-		case "weight":
-			latest=last.getWeight();
-			break;
-		case "legs":
-			latest=last.getLegs();
-			break;
-		case "chest":
-			latest=last.getChest();
-			break;
-		case "height":
-			latest=last.getHeight();
-			break;
-		case "forearms":
-			latest=last.getForearms();
-			break;
-		case "biceps":
-			latest=last.getBiceps();
-			break;
-		case "hips":
-			latest=last.getHips();
-			break;
-		case "waistline":
-			latest=last.getWaistline();
-			break;
-		case "calfs":
-			latest=last.getCalfs();
-			break;
-		default:
-			System.out.println("TIPO goal non registrato !");
-			break;
-		}
-		//System.out.println(latest+" -> "+value_atteso);
-		if ( latest.equals(value_atteso) ) {
+	public void updateGoal(Double last) {
+		if ( last.equals(value_atteso) ) {
 			this.stato = "Got it";
 		}
 		else {
@@ -101,9 +67,8 @@ public class Goal {
    	   	return d;
 	}
 	
-	public Goal(String tipo, Date data, Double value_atteso) {
-		this.setEmail(UserData.getInstance().getMail());
-		this.setEmail(UserData.getInstance().getMail());
+	public Goal(String email, String tipo, Date data, Double value_atteso) {
+		this.email = email;
 		this.tipo = tipo;
 		this.data_immissione = data;
 		this.value_atteso = value_atteso;

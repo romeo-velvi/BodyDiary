@@ -5,27 +5,27 @@ import java.sql.SQLException;
 /* TO TRY ON TERMINAL THE VARIOUS UPDATE 
 C:\Users\Velvi\eclipse-workspace\NewDERBYproject>ij
 Versione ij 10.15
-ij> CONNECT 'jdbc:derby:C:\Users\Velvi\eclipse-workspace\NewDERBYproject2\newDBderby;';
+ij> CONNECT 'jdbc:derby:C:\Users\Velvi\eclipse-workspace\JFX4project1\newDBderby;';
 ij> show tables;
 */
 
-public class Main {
+public class Main_db_sample {
 
-	public static void function_main (String[] args) throws SQLException{
+	public static void _main(String[] args) throws SQLException{
 		
-		DerbydbClass.getInstance();
+		DBdao db = new DerbydbClass();
 		
 		/* connection */
-		if (DerbydbClass.getConnection()==null) {
+		if (db.getConnection()==null) {
 			System.out.println("Errore connessione DB");
 			return;
 		}
 		
 		/*FOR TEST CASE*/
-		DerbydbClass.deleteAllTable();
+		db.deleteAllTable();
 		
 		/* Check & create table UserData */
-		DerbydbClass.createTables();
+		db.createTables();
 		
 		/* REGISTRAZIONE */
 		String 	name = "romeo";     
@@ -34,7 +34,7 @@ public class Main {
 		String 	password = "WAO"; 
 		Date 	birt_date = Date.valueOf("2000-04-19");
 		String 	gender = "male";   
-		DerbydbClass.insertUserData(UserData.setInstance(name, surname, mail, password, birt_date, gender));
+		db.insertUserData(UserData.setInstance(name, surname, mail, password, birt_date, gender));
 		// 2
 		 name = "ale";     
 		 surname = "etwrw";  
@@ -42,14 +42,14 @@ public class Main {
 		 String password1 = "a"; 
 		 birt_date = Date.valueOf("1999-04-19");
 		 gender = "female"; 
-		DerbydbClass.insertUserData(UserData.setInstance(name, surname, mail1, password1, birt_date, gender));
+		 db.insertUserData(UserData.setInstance(name, surname, mail1, password1, birt_date, gender));
 		
 		
 		/* CHECK IF USER EXIST */
 		UserData ud = null;
-		if (DerbydbClass.checkUser("rv@sdddd.it", "WAO")) {
+		if (db.checkUser("rv@sdddd.it", "WAO")) {
 			System.out.println("Utente esistene");
-			ud = DerbydbClass.retreiveUserData(mail, password);
+			ud = db.retreiveUserData(mail, password);
 			UserData.setInstance(ud);
 		}else {
 			System.out.println("Login faild");
@@ -66,8 +66,8 @@ public class Main {
 		Double hips		= 1.1	;	  
 		Double waistline = 1.1	; 
 		Double calfs	 = 1.1	; 	  
-		Measurement mm = new Measurement(weight, legs, chest, height, forearms, biceps, hips, waistline, calfs, Date.valueOf("2012-12-12"));
-		DerbydbClass.insertUserMeasurement(mm);
+		Measurement mm = new Measurement(mail, weight, legs, chest, height, forearms, biceps, hips, waistline, calfs, Date.valueOf("2012-12-12"));
+		db.insertUserMeasurement(mm);
 		//2
 		 weight	= 21.1	;    
 		 legs		= 21.1	;	  
@@ -78,11 +78,11 @@ public class Main {
 		 hips		= 21.1	;	  
 		 waistline = 21.1	; 
 		 calfs	 = 21.1	; 	  
-		mm = new Measurement(weight, legs, chest, height, forearms, biceps, hips, waistline, calfs, Measurement.getCurrentTime());
-		DerbydbClass.insertUserMeasurement(mm);
+		mm = new Measurement(mail, weight, legs, chest, height, forearms, biceps, hips, waistline, calfs, Measurement.getCurrentTime());
+		db.insertUserMeasurement(mm);
 		
 		/* RETREIVE ALL MEASUREMENT */
-		Iterator it1 = DerbydbClass.retreiveMeasure(mail);
+		Iterator it1 = db.retreiveMeasure(mail);
 		Measurement mes;
 		while (it1.hasNext()) {
 			mes= (Measurement)it1.next();
@@ -90,32 +90,32 @@ public class Main {
 		}
 		
 		/* RETREIVE LATEST MEASUREMENT */
-		Measurement last = DerbydbClass.getLastMeasurement(mail);
+		Measurement last = db.getLastMeasurement(mail);
 		System.out.println("ULTIMO:"+ last.toString());
 		
 		/* ADD USER GOAL */
 		String tipo = "weight";         
 		Date data_immissione  = (Goal.getCurrentTime());
 		Double value_atteso = 12.3;
-		Goal g=new Goal(tipo, Date.valueOf("2012-12-12"), value_atteso);
-		DerbydbClass.insertUserGoal(g);
+		Goal g=new Goal(mail, tipo, Date.valueOf("2012-12-12"), value_atteso);
+		db.insertUserGoal(g);
 		// 2
 		 tipo = "height";         
 		 data_immissione  = (Goal.getCurrentTime());
 		 value_atteso = 21.1;
-		 g=new Goal(tipo, data_immissione, value_atteso);
-		DerbydbClass.insertUserGoal(g);
+		 g=new Goal(mail, tipo, data_immissione, value_atteso);
+		 db.insertUserGoal(g);
 		
 		/* RETREIVE ALL GOALS */
-		Iterator it2 = DerbydbClass.retreiveGoal(UserData.getInstance().getMail());
+		Iterator it2 = db.retreiveGoal(UserData.getInstance().getMail());
 		Goal goa;
 		while (it2.hasNext()) {
 			goa= (Goal)it2.next();
-			goa.updateGoal(last); // PRIMA DELLA STAMPA ESEGUIRE L'UPDATE PER LO STATO
+			goa.updateGoal(last.getMeasureByType(goa.getTipo())); // PRIMA DELLA STAMPA ESEGUIRE L'UPDATE PER LO STATO
 			System.out.println(goa.toString());
 		}
 		
-		DerbydbClass.close_db();
+		db.close_db();
 		System.out.println("End program");
 	}
 

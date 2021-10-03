@@ -1,8 +1,10 @@
 package application;
+import database.*;
 
 import java.io.IOException;
 import java.security.spec.ECFieldF2m;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -25,6 +27,8 @@ public class EffectiveHomeController implements GenericController {
 	
 	@FXML
 	Label user_id_text;
+	
+	DBdao db = new DerbydbClass();
 	
 	private Stage stage;
 	private Scene scene;
@@ -54,7 +58,7 @@ public class EffectiveHomeController implements GenericController {
 	
     @FXML
     public void initialize(){ // setta variabili al caricamento della pagina
-		user_id_text.setText(UserData.getName());
+		user_id_text.setText(UserData.getInstance().getName());
 		scene = user_id_text.getScene();
 		// TODO foreach measurement, drow a line chart
 		SetLineChart();
@@ -65,9 +69,74 @@ public class EffectiveHomeController implements GenericController {
     	
     	//TODO RECUPERARE L'ITERATOR dei vari campi facendo una query al db
     	//	Passarle in formato series ed aggiungerli ai grafici
+    
+    	database.Iterator it = null;
+    	try {
+			it = db.retreiveMeasure(UserData.getInstance().getMail());
+		} catch (SQLException e) {
+			System.out.println("Errore recezione misure: "+e);
+			return;
+		}
     	
+    	XYChart.Series series1 = new XYChart.Series();   
+    	XYChart.Series series2 = new XYChart.Series();   
+    	XYChart.Series series3 = new XYChart.Series();   
+    	XYChart.Series series4 = new XYChart.Series();   
+    	XYChart.Series series5 = new XYChart.Series();   
+    	XYChart.Series series6 = new XYChart.Series();   
+    	XYChart.Series series7 = new XYChart.Series();   
+    	XYChart.Series series8 = new XYChart.Series();   
+    	XYChart.Series series9 = new XYChart.Series();
+    	
+    	/* 
+		 * Double weight, Double legs, 
+		 * Double chest, Double height, 
+		 * Double forearms, Double biceps
+		 * Double hips, Double waistline, 
+		 * Double calfs, Date d	
+		 */	
+    	
+    	chart1.setTitle("Weight");
+    	chart2.setTitle("legs");
+    	chart3.setTitle("chest");
+    	chart4.setTitle("height");
+    	chart5.setTitle("forearms");
+    	chart6.setTitle("biceps");
+    	chart7.setTitle("hips");
+    	chart8.setTitle("waistline");
+    	chart9.setTitle("calfs");
+    	
+    	
+    	Measurement mes;
+		while (it.hasNext()) {
+			mes= (Measurement)it.next();
+			series1.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getWeight()));
+			series2.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getLegs()));
+			series3.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getChest()));
+			series4.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHeight()));
+			series5.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getForearms()));
+			series6.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getBiceps()));
+			series7.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHips()));
+			series8.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getWaistline()));
+			series9.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getCalfs()));
+			System.out.println(mes.toString());
+		}
+    	
+		chart1.getData().addAll(series1);
+		chart2.getData().addAll(series2);
+		chart3.getData().addAll(series3);
+		chart4.getData().addAll(series4);
+		chart5.getData().addAll(series5);
+		chart6.getData().addAll(series6);
+		chart7.getData().addAll(series7);
+		chart8.getData().addAll(series8);
+		chart9.getData().addAll(series9);
+    	
+    	
+    	
+    	
+    	/*
     	int min = 10, max = 100;
-    	
     	XYChart.Series series1 = new XYChart.Series();   	
     	series1.getData().add(new XYChart.Data(("2010/05/01"),(int)Math.floor(Math.random()*(max-min+1)+min)));
     	series1.getData().add(new XYChart.Data(("2010/05/02"),(int)Math.floor(Math.random()*(max-min+1)+min)));
@@ -201,6 +270,7 @@ public class EffectiveHomeController implements GenericController {
     	series9.getData().add(new XYChart.Data(("2010/12/02"),(int)Math.floor(Math.random()*(max-min+1)+min)));
     	chart9.getData().addAll(series9);
     	chart9.setTitle("Calfs");
+    	*/
     }
 	
 	public Stage launch(Stage s) {
@@ -241,9 +311,9 @@ public class EffectiveHomeController implements GenericController {
 	}
 
 	public void OnButtonExitPressed(MouseEvent event) throws Exception{
-		//TODO Exit User
 		GenericController g = new ProxyStartController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
+		UserData.erease();
 	}
 	
 }

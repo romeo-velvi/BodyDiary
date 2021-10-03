@@ -1,6 +1,8 @@
 package application;
+import database.*;
 
 import java.io.IOException;
+import database.DerbydbClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +25,8 @@ public class EffectiveLoginController implements GenericController {
 	PasswordField pass_field;
 	@FXML
 	Label ops_text;
+	
+	private DBdao db = new DerbydbClass();
 	
 	private Stage stage;
 	private Scene scene;
@@ -48,30 +52,27 @@ public class EffectiveLoginController implements GenericController {
 		String pass = pass_field.getText();
 		System.out.println("Tentativo di accesso di: " + mail +" "+pass);
 		Thread.sleep(2);
-		
-		/*// CONTROL DATA
-		if(user != "admin" && pass != "admin"){
-			String errorm = ops_text.getText(); // to set error message: midded, mistake or connection problem
-			ops_text.setText(errorm);
+	
+		if (this.db.checkUser(mail, pass)) {
+			ops_text.setVisible(false);
+			
+		}else {
+			//String errorm = ops_text.getText(); // to set error message: midded, mistake or connection problem
+			//ops_text.setText(errorm);
 			ops_text.setVisible(true);
 			return;
-		}else {
-			ops_text.setVisible(false);
-		}*/
+		}
 		
-		// REDIRECTION TO HOME
-		// TAKE ALL USERS DATA FROM DB
-		String name = mail;
-		String surname= mail;
-		UserData.setMail(mail);
-		UserData.setName(name);
-		UserData.setSurname(surname);
+		// prendo dati utente loggato
+		UserData ud = null;
+		ud = db.retreiveUserData(mail, pass);
+		UserData.setInstance(ud);
+		
 		GenericController g = new ProxyHomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); // ritorna stage corrente per farlo aggiornare
 		
 	}
 	
-	//TODO CAMBIARE ActionEvent con uno più appropriato al click del mouse
 	public void OnButtonSingupPressed(MouseEvent event) throws Exception {
 		GenericController g = new ProxySingupController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); // ritorna stage corrente per farlo aggiornare

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DerbydbClass {
+public class DerbydbClass extends DBdao{
 
 	private static DerbydbClass instance;
 	private static Connection to_db;
@@ -17,44 +17,45 @@ public class DerbydbClass {
 		try {
 			DerbydbClass.to_db = DriverManager.getConnection(DerbydbClass.path);
 		} catch (SQLException e) {
-			System.out.println("Attenzione: "+e);
+			System.out.println("Problema connessione db: "+e);
 		}
 		System.out.println("DB connection ok!");
 	}
 	
-	public static DerbydbClass getInstance(){
+	public DerbydbClass getInstance(){
 		if(instance == null) {
 			instance = new DerbydbClass();
 		}
 		return instance;
 	}
 	
-	public static Connection getConnection() {
+	public  Connection getConnection() {
 		return to_db;
 	}
 	
-	public static void setConnection(Connection to_db) {
+	public void setConnection(Connection to_db) {
 		DerbydbClass.to_db = to_db;
 	}
 	
-	public static Boolean close_db() {
+	public  Boolean close_db() {
 		try {
 			to_db.close();
 		} catch (SQLException e) {
-			System.out.println("Attenzione: "+e);
+			System.out.println("Problema chiusura db: "+e);
 		}
 		return true;
 	}
 	
 	//@SuppressWarnings("unused")
-	public static void clearTable(String tablename) throws SQLException {
+	public void clearTable(String tablename) throws SQLException {
 		String query; 
 		query="DELETE FROM "+ tablename;
 		ExecuteQuery(query);
 		System.out.println("Clear"+ tablename + "eseguito");
 	}
 	
-	public static void deleteAllTable() throws SQLException {
+	public  void deleteAllTable() throws SQLException {
+		try {
 		String query, tablename;
 		tablename = "USERDATA";
 		query="DROP TABLE "+tablename;
@@ -68,9 +69,12 @@ public class DerbydbClass {
 		query="DROP TABLE "+tablename;
 		ExecuteQuery(query);
 		System.out.println("DROP "+ tablename + " eseguito");
+		} catch (Exception e) {
+			System.out.println("Problema cancellazione tabelle db: "+e);
+		}
 	}	
 	
-	private static Boolean ExecuteQuery(String query) throws SQLException {
+	private  Boolean ExecuteQuery(String query) throws SQLException {
 		// creating statements
 		Statement stmt = to_db.createStatement();
 		try {
@@ -82,7 +86,7 @@ public class DerbydbClass {
 		return true;
 	}
 	
-	public static void createTables() {
+	public void createTables() {
 		String sql = "CREATE TABLE UserData "
 				+ "( "
 					+ "email VARCHAR(255) PRIMARY KEY,"
@@ -135,7 +139,7 @@ public class DerbydbClass {
 		}
 	}
 	
-	public static void insertUserData(UserData ud) {
+	public void insertUserData(UserData ud) {
 		String query="INSERT INTO UserData"
 				+ "(email,password,name,surname,gender,birth_date)"
 				+ "VALUES "
@@ -160,7 +164,7 @@ public class DerbydbClass {
 		}
 	}
 	
-	public static void insertUserMeasurement(Measurement mm) {
+	public void insertUserMeasurement(Measurement mm) {
 		String query="INSERT INTO UserMeasure"
 				+ "("
 					+"email 	,"
@@ -210,7 +214,7 @@ public class DerbydbClass {
 		}
 	}
 	
-	public static void insertUserGoal(Goal gg) {
+	public  void insertUserGoal(Goal gg) {
 		String query="INSERT INTO UserGoals"
 				+ "(email,date,type,goal)"
 				+ "VALUES "
@@ -230,7 +234,7 @@ public class DerbydbClass {
 		}
 	}
 	
-	public static Boolean checkUser(String email, String pass) {
+	public Boolean checkUser(String email, String pass) {
 		Boolean b = false;
 		String query = "SELECT COUNT(*) as OK FROM USERDATA WHERE "
 				+ "EMAIL = "
@@ -255,7 +259,7 @@ public class DerbydbClass {
 		return b;
 	}
 	
-	public static UserData retreiveUserData(String email, String pass) {
+	public UserData retreiveUserData(String email, String pass) {
 		UserData ud = null;
 		Statement stmt; ResultSet rs;
 		String query = "SELECT * FROM USERDATA WHERE EMAIL= '"+email+"'  and password = '"+pass+"'";
@@ -277,7 +281,7 @@ public class DerbydbClass {
 		return ud;
 	}
 
-	public static Measurement getLastMeasurement(String email) throws SQLException{
+	public Measurement getLastMeasurement(String email) throws SQLException{
 		Measurement m = null;
 		String query = "SELECT "
 				+"date		,"
@@ -319,12 +323,18 @@ public class DerbydbClass {
 		waistlin=	rs.getDouble("waistline");
 		calfs=	rs.getDouble("calfs");  
 		
-		m = new Measurement(weight, legs, chest, height, forearms, biceps, hips, waistlin, calfs, d);
-		
+		m = new Measurement(email, weight, legs, chest, height, forearms, biceps, hips, waistlin, calfs, d);
+		/* 
+		 * Double weight, Double legs, 
+		 * Double chest, Double height, 
+		 * Double forearms, Double biceps
+		 * Double hips, Double waistline, 
+		 * Double calfs, Date d	
+		 */	
 		return m;
 	}
 	
-	public static Iterator retreiveMeasure(String email) throws SQLException {
+	public Iterator retreiveMeasure(String email) throws SQLException {
 		String query = "SELECT "
 				+"date		,"
 				+"weight 	,"
@@ -367,13 +377,13 @@ public class DerbydbClass {
 			waistlin=	rs.getDouble("waistline");
 			calfs=	rs.getDouble("calfs");  
 		
-			aggregate.add(new Measurement(weight, legs, chest, height, forearms, biceps, hips, waistlin, calfs,d));
+			aggregate.add(new Measurement(email, weight, legs, chest, height, forearms, biceps, hips, waistlin, calfs,d));
 		}
 		Iterator it = aggregate.createIterator();
 		return it;
 	}
 	
-	public static Iterator retreiveGoal(String email) throws SQLException {
+	public Iterator retreiveGoal(String email) throws SQLException {
 		String query = "SELECT date,type,goal"
 				+" FROM USERGOALS WHERE EMAIL="
 				+ "'"+email+"'"
@@ -392,11 +402,11 @@ public class DerbydbClass {
 			type = rs.getString("type");  
 			goal =	rs.getDouble("goal");	
 		
-			aggregate.add(new Goal(type, d, goal));
+			aggregate.add(new Goal(email,type, d, goal));
 		}
 		Iterator it = aggregate.createIterator();
 		return it;
 	}
 
-	
+
 }

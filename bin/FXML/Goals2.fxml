@@ -106,14 +106,14 @@
             </ScrollPane>
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="60.0" GridPane.columnSpan="4" GridPane.rowIndex="4">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" GridPane.columnSpan="4" GridPane.rowIndex="4">
          <children>
             <Label text="Type">
                <font>
                   <Font name="Malgun Gothic" size="30.0" />
                </font>
             </Label>
-            <Label text="Insertion date">
+            <Label text="Goal">
                <font>
                   <Font name="Malgun Gothic" size="30.0" />
                </font>

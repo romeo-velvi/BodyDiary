@@ -1,8 +1,12 @@
 package application;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-
+import database.DBdao;
+import database.DerbydbClass;
+import database.Measurement;
+import database.UserData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 
 public class EffectiveAntropomController implements GenericController {
 
+	DBdao db = new DerbydbClass();
 	
 	private Stage stage;
 	private Scene scene;
@@ -30,7 +35,6 @@ public class EffectiveAntropomController implements GenericController {
     private LineChart<?, ?> rvachart;
     @FXML
     private LineChart<?, ?> rvfcahrt;
-
 	
 	
     @FXML
@@ -43,9 +47,51 @@ public class EffectiveAntropomController implements GenericController {
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public void SetChart() {
     	
-    	//TODO RECUPERARE L'ITERATOR dei vari campi facendo una query al db
-    	//	Passarle in formato series ed aggiungerli ai grafici
+    	database.Iterator it = null;
+    	try {
+			it = db.retreiveMeasure(UserData.getInstance().getMail());
+		} catch (SQLException e) {
+			System.out.println("Errore recezione misure: "+e);
+			return;
+		}
     	
+    	XYChart.Series series1 = new XYChart.Series();   
+    	XYChart.Series series2 = new XYChart.Series();   
+    	XYChart.Series series3 = new XYChart.Series();   
+    	XYChart.Series series4 = new XYChart.Series();   
+    	
+    	/* 
+		 * Double weight, Double legs, 
+		 * Double chest, Double height, 
+		 * Double forearms, Double biceps
+		 * Double hips, Double waistline, 
+		 * Double calfs, Date d	
+		 */	
+    	
+    	fatchart.setTitle("% fat mass");
+    	imcchart.setTitle("Body mass index");
+    	rvachart.setTitle("Waistline-Heigh ratio");
+    	rvfcahrt.setTitle("Waistline-Hips ratio");
+    	
+    	
+    	Measurement mes;
+		while (it.hasNext()) {
+			mes= (Measurement)it.next();
+			//TODO Calcoli corretti per i dati
+			series1.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getWeight()*5));
+			series2.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getLegs()*5));
+			series3.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getChest()*5));
+			series4.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHeight()*5));
+			System.out.println(mes.toString());
+		}
+    	
+		fatchart.getData().addAll(series1);
+		imcchart.getData().addAll(series2);
+		rvachart.getData().addAll(series3);
+		rvfcahrt.getData().addAll(series4);
+    	
+    	
+    	/*
     	int min = 10, max = 100;
     	
     	XYChart.Series series1 = new XYChart.Series();   	
@@ -107,7 +153,7 @@ public class EffectiveAntropomController implements GenericController {
     	rvfcahrt.getData().addAll(series4);
     	rvfcahrt.setTitle("Waistline-Hips ratio");
     	
-    	
+    	*/
     }
 	
 	public Stage launch(Stage s) {

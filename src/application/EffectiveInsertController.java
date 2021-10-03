@@ -1,11 +1,8 @@
 package application;
+import database.*;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,47 +64,35 @@ public class EffectiveInsertController implements GenericController {
 		stage.show();
 		return stage;
 	}
-	
-	//TODO CAMBIARE ActionEvent con uno più appropriato al click del mouse
-	public void OnButtonSingupPressed(MouseEvent event) throws Exception {
-		GenericController g = new ProxySingupController();
-		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); // ritorna stage corrente per farlo aggiornare
-	}
-	
-	
+
 	@FXML
     void OnButtonHomePressed(MouseEvent event) throws Exception{
 		GenericController g = new ProxyHomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
     }
 
-    @FXML
+	@FXML
     void OnButtonHomePressed1(ActionEvent event) throws Exception{
     	GenericController g = new ProxyHomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
     }
-
+	
     @FXML
     void OnButtonInsertPressed(ActionEvent event) throws Exception{
-    	//TODO inserimento dati nel DB
     	Double biceps, calfs, chest, forearms, height, hips, legs, waistline, weight ;
-    	LocalDate date; DateTimeFormatter formatter; Date d;
+    	Date d;
     	
     	try {
 	    	biceps    = Double.parseDouble(bicepsx.getText());      	
 	    	calfs     = Double.parseDouble(calfsx.getText());      	
-	    	chest    =  Double.parseDouble(chestx.getText());    	
+	    	chest     = Double.parseDouble(chestx.getText());    	
 	    	forearms  = Double.parseDouble(forearmsx.getText());
 	    	height    = Double.parseDouble(heightx.getText());
 	    	hips      = Double.parseDouble(hipsx.getText());
 	    	legs      = Double.parseDouble(legsx.getText());
 	    	waistline = Double.parseDouble(waistlinex.getText());
 	    	weight    = Double.parseDouble(weightx.getText());
-	    	date = LocalDate.now();
-			formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
-			String text = date.format(formatter);
-			LocalDate parsedDate = LocalDate.parse(text, formatter);
-	   	   	d = Date.valueOf(parsedDate);
+	    	d		  = Measurement.getCurrentTime();
     	}catch (Exception e) {
 			System.out.println("Problema importare dati: "+e);
 			ops_text.setVisible(true);
@@ -115,19 +100,26 @@ public class EffectiveInsertController implements GenericController {
 		}  
     	ops_text.setVisible(false);
     	
-    	String nome_user = UserData.getName();
-    	System.out.println(" Utente "+ nome_user +" ha inserito: "
-    			+ "\n biceps   =" + biceps   
-    			+ "\n calfs    =" + calfs    
-    			+ "\n chest    =" + chest    
-    			+ "\n forearms =" + forearms 
-    			+ "\n height   =" + height   
-    			+ "\n hips     =" + hips     
-    			+ "\n legs     =" + legs     
-    			+ "\n waistline=" + waistline
-    			+ "\n weight   =" + weight   
-    			+ "\n il giorno = " + d 
+    	
+    	Measurement mm = new Measurement(UserData.getInstance().getMail(), weight, legs, chest, height, forearms, biceps, hips, waistline, calfs, d);
+    	
+    	DBdao db = new DerbydbClass();
+    	
+    	db.insertUserMeasurement(mm);
+    	
+    	System.out.println(" Utente "+ UserData.getInstance().getName() +" ha inserito: "
+    			+ "\n biceps   =" + mm.getMail()   
+    			+ "\n calfs    =" + mm.getCalfs()    
+    			+ "\n chest    =" + mm.getCalfs()    
+    			+ "\n forearms =" + mm.getForearms() 
+    			+ "\n height   =" + mm.getHeight()   
+    			+ "\n hips     =" + mm.getHips()     
+    			+ "\n legs     =" + mm.getLegs()     
+    			+ "\n waistline=" + mm.getWaistline()
+    			+ "\n weight   =" + mm.getWeight()   
+    			+ "\n il giorno = " + mm.getDate()
     			);
+    	
     	GenericController g = new ProxyHomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
     }
