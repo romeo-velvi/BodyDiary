@@ -1,6 +1,6 @@
 package application;
 
-
+import database.*;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,10 @@ import javafx.stage.Stage;
 @SuppressWarnings("unused")
 public class Main_app extends Application {
     public static void main(String[] args) {
-        launch(args);
+    	
+    	
+    	
+        //launch(args);
     }
     
     @Override
@@ -28,6 +31,7 @@ public class Main_app extends Application {
 //    	Parent root = FXMLLoader.load(getClass().getResource("../FXML/Start2.fxml")); 
 //		Scene scene = new Scene(root);
 //		stage.setScene(scene);
+		
 		
 		GenericController g = new ProxyStartController();
 		g.launch(stage);
