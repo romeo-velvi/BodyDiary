@@ -30,7 +30,7 @@ public class EffectiveAntropomController implements GenericController {
     @FXML
     private LineChart<?, ?> fatchart;
     @FXML
-    private LineChart<?, ?> imcchart;
+    private LineChart<?, ?> leanchart;
     @FXML
     private LineChart<?, ?> rvachart;
     @FXML
@@ -69,7 +69,7 @@ public class EffectiveAntropomController implements GenericController {
 		 */	
     	
     	fatchart.setTitle("% fat mass");
-    	imcchart.setTitle("Body mass index");
+    	leanchart.setTitle("% lean mass");
     	rvachart.setTitle("Waistline-Heigh ratio");
     	rvfcahrt.setTitle("Waistline-Hips ratio");
     	
@@ -77,84 +77,41 @@ public class EffectiveAntropomController implements GenericController {
     	Measurement mes;
 		while (it.hasNext()) {
 			mes= (Measurement)it.next();
-			//TODO Calcoli corretti per i dati
-			series1.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getWeight()*5));
-			series2.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getLegs()*5));
-			series3.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getChest()*5));
-			series4.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHeight()*5));
+			series1.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),calculateFatMass(UserData.getInstance().getGender(), mes.getWaistline(), mes.getLegs(), mes.getHips(), mes.getHeight())));
+			series2.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),calculateLeanMass(UserData.getInstance().getGender(), mes.getWeight(), mes.getHeight())));
+			series3.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHeight()/mes.getHeight()));
+			series4.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHeight()/mes.getHeight()));
 			System.out.println(mes.toString());
 		}
     	
 		fatchart.getData().addAll(series1);
-		imcchart.getData().addAll(series2);
+		leanchart.getData().addAll(series2);
 		rvachart.getData().addAll(series3);
 		rvfcahrt.getData().addAll(series4);
     	
-    	
-    	/*
-    	int min = 10, max = 100;
-    	
-    	XYChart.Series series1 = new XYChart.Series();   	
-    	series1.getData().add(new XYChart.Data(("2010/05/01"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series1.getData().add(new XYChart.Data(("2010/05/02"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series1.getData().add(new XYChart.Data(("2010/05/03"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series1.getData().add(new XYChart.Data(("2010/05/04"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series1.getData().add(new XYChart.Data(("2010/05/05"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series1.getData().add(new XYChart.Data(("2010/05/06"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series1.getData().add(new XYChart.Data(("2010/05/07"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series1.getData().add(new XYChart.Data(("2010/05/08"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series1.getData().add(new XYChart.Data(("2010/06/01"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series1.getData().add(new XYChart.Data(("2010/06/02"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	fatchart.getData().addAll(series1);
-    	fatchart.setTitle("% fat mass");
-    	
-    	
-    	XYChart.Series series2 = new XYChart.Series();  
-    	series2.getData().add(new XYChart.Data(("2010/07/01"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series2.getData().add(new XYChart.Data(("2010/07/02"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series2.getData().add(new XYChart.Data(("2010/07/03"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series2.getData().add(new XYChart.Data(("2010/07/04"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series2.getData().add(new XYChart.Data(("2010/07/05"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series2.getData().add(new XYChart.Data(("2010/07/06"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series2.getData().add(new XYChart.Data(("2010/07/07"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series2.getData().add(new XYChart.Data(("2010/07/08"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series2.getData().add(new XYChart.Data(("2010/08/01"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series2.getData().add(new XYChart.Data(("2010/08/02"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	imcchart.getData().addAll(series2);
-    	imcchart.setTitle("Body mass index");
-    	
-    	
-    	XYChart.Series series3 = new XYChart.Series();  
-    	series3.getData().add(new XYChart.Data(("2010/09/01"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series3.getData().add(new XYChart.Data(("2010/09/02"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series3.getData().add(new XYChart.Data(("2010/09/03"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series3.getData().add(new XYChart.Data(("2010/09/04"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series3.getData().add(new XYChart.Data(("2010/09/05"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series3.getData().add(new XYChart.Data(("2010/09/06"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series3.getData().add(new XYChart.Data(("2010/09/07"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series3.getData().add(new XYChart.Data(("2010/09/08"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series3.getData().add(new XYChart.Data(("2010/10/01"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series3.getData().add(new XYChart.Data(("2010/10/02"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	rvachart.getData().addAll(series3);
-    	rvachart.setTitle("Waistline-Heigh ratio");
-   
-    	
-    	XYChart.Series series4 = new XYChart.Series();  
-    	series4.getData().add(new XYChart.Data(("2010/11/01"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series4.getData().add(new XYChart.Data(("2010/11/02"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series4.getData().add(new XYChart.Data(("2010/11/03"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series4.getData().add(new XYChart.Data(("2010/11/04"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series4.getData().add(new XYChart.Data(("2010/11/05"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series4.getData().add(new XYChart.Data(("2010/11/06"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series4.getData().add(new XYChart.Data(("2010/11/07"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series4.getData().add(new XYChart.Data(("2010/11/08"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series4.getData().add(new XYChart.Data(("2010/12/01"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	series4.getData().add(new XYChart.Data(("2010/12/02"),(int)Math.floor(Math.random()*(max-min+1)+min)));
-    	rvfcahrt.getData().addAll(series4);
-    	rvfcahrt.setTitle("Waistline-Hips ratio");
-    	
-    	*/
     }
+    
+    private Double calculateFatMass(String gender, Double vita, Double gamba, Double fianchi, Double altezza) {
+    	Double d = 0.0d;
+    	if (gender.equals("female")) {
+    		d = 495/(1.29579 - 0.35004*(Math.log(vita+fianchi-gamba)) + 0.22100 *(Math.log(altezza)))-450;
+    		return d;
+    	}
+		d = 495/(1.0324 - 0.19077*(Math.log(vita-gamba)) + 0.15456*(Math.log(altezza)))-450;
+    	return d;
+    }
+    
+    private Double calculateLeanMass(String gender, Double peso, Double altezza) {
+    	Double d = 0.0d;
+    	if (gender.equals("female")) {
+    		d = (1.10 * peso) - 128*(peso/(100*altezza)*2);
+    		return d;
+    	}
+    	d = (1.07 * peso) - 148*(peso/(100*altezza)*2);
+    	return d;
+    }
+    
+    
 	
 	public Stage launch(Stage s) {
 		this.stage = s;

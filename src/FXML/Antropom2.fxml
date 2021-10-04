@@ -91,7 +91,7 @@
             </Button>
          </children>
       </HBox>
-      <LineChart fx:id="imcchart" title="Indice di massa corporea" GridPane.rowIndex="2">
+      <LineChart fx:id="leanchart" title="\%  massa magra" GridPane.rowIndex="2">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>
@@ -99,7 +99,7 @@
             <NumberAxis side="LEFT" />
          </yAxis>
       </LineChart>
-      <LineChart fx:id="fatchart" title="\% grasso croporeo" GridPane.rowIndex="3">
+      <LineChart fx:id="fatchart" title="\% massa grassa" GridPane.rowIndex="3">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>

@@ -98,14 +98,14 @@ public class EffectiveHomeController implements GenericController {
 		 */	
     	
     	chart1.setTitle("Weight");
-    	chart2.setTitle("legs");
-    	chart3.setTitle("chest");
-    	chart4.setTitle("height");
-    	chart5.setTitle("forearms");
-    	chart6.setTitle("biceps");
-    	chart7.setTitle("hips");
-    	chart8.setTitle("waistline");
-    	chart9.setTitle("calfs");
+    	chart2.setTitle("Legs");
+    	chart3.setTitle("Chest");
+    	chart4.setTitle("Height");
+    	chart5.setTitle("Forearms");
+    	chart6.setTitle("Biceps");
+    	chart7.setTitle("Hips");
+    	chart8.setTitle("Waistline");
+    	chart9.setTitle("Calfs");
     	
     	
     	Measurement mes;

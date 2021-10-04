@@ -89,7 +89,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="weightx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
-                  <Label text="kg">
+                  <Label text=" kg">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
                      </font>
@@ -111,7 +111,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="heightx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
-                  <Label text="cm">
+                  <Label text=" m">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
                      </font>
@@ -133,7 +133,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="hipsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
-                  <Label text="cm">
+                  <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
                      </font>
@@ -155,7 +155,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="legsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
-                  <Label text="cm">
+                  <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
                      </font>
@@ -177,7 +177,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="forearmsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
-                  <Label text="cm">
+                  <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
                      </font>
@@ -199,7 +199,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="waistlinex" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
-                  <Label text="cm">
+                  <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
                      </font>
@@ -221,7 +221,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="chestx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
-                  <Label text="cm">
+                  <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
                      </font>
@@ -243,7 +243,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="bicepsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
-                  <Label text="cm">
+                  <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
                      </font>
@@ -265,7 +265,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="calfsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
-                  <Label text="cm">
+                  <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
                      </font>

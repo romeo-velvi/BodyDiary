@@ -28,7 +28,7 @@ public class ProxyStartController implements GenericController{
 		Thread.sleep(3);
 
 		// ELIMINAREEEEEEEEEEEEEEEEEEEEEEE QUANDO SI HA FINITO
-		startdbSAMPLE();
+		//startdbSAMPLE();
 		
 	}
 	
