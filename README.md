@@ -1,5 +1,5 @@
-  
-<!--  README LEARN FLOW  -->
+<H1 align="center">PROG3 PROJECT</H1>
+<!--  README  -->
 
 <!-- PROJECT LOGO -->
 <br />
@@ -75,7 +75,7 @@ User librery:
 	-  Derby also supports the more familiar client/server mode with the  [Derby Network Client JDBC driver and Derby Network Server](http://db.apache.org/derby/papers/DerbyTut/ns_intro.html).
 	-  Derby is easy to install, deploy, and use.
 - <b>iText</b>: is a [library](https://en.wikipedia.org/wiki/Library_(computer_science) "Library (computer science)") for creating and manipulating [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format "Portable Document Format") files in [Java](https://en.wikipedia.org/wiki/Java_(programming_language) "Java (programming language)").
--  <b> altro </b>: 
+-  <b> Apache poi </b>: is a Library for creation and manipulation of doc file.
 
 
 <!-- GETTING STARTED -->
