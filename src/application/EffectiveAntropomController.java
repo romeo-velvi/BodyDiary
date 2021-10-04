@@ -58,14 +58,7 @@ public class EffectiveAntropomController implements GenericController {
     	XYChart.Series series2 = new XYChart.Series();   
     	XYChart.Series series3 = new XYChart.Series();   
     	XYChart.Series series4 = new XYChart.Series();   
-    	
-    	/* 
-		 * Double weight, Double thighs, 
-		 * Double chest, Double height, 
-		 * Double forearms, Double biceps
-		 * Double hips, Double waistline, 
-		 * Double calfs, Date d	
-		 */	
+
     	
     	fatchart.setTitle("% fat mass");
     	leanchart.setTitle("% lean mass");

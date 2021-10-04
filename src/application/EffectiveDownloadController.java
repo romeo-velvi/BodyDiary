@@ -1,7 +1,15 @@
 package application;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import com.itextpdf.layout.Document;
+
+import database.DBdao;
+import database.DerbydbClass;
+import database.UserData;
+import docsdownload.Documento;
+import docsdownload.DocumentoFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -30,6 +38,8 @@ public class EffectiveDownloadController implements GenericController {
 	@FXML
 	ImageView doc_btn;
 	
+	DBdao db = new DerbydbClass();
+	
 	private Stage window;
 	private Scene scene;
 	private Parent root;
@@ -57,15 +67,34 @@ public class EffectiveDownloadController implements GenericController {
 	
 
 	public void OnButtonDownloadPressed(ActionEvent event) {
+		
+    	database.Iterator it = null;
+    	try {
+			it = db.getLast7Measurement(UserData.getInstance().getMail());
+		} catch (SQLException e) {
+			System.out.println("Errore recezione misure: "+e);
+			return;
+		}
+		
 		ToggleButton selformat = (ToggleButton)choice_download.getSelectedToggle();
 		String format = selformat.getId();
 		String tipo = null;
+		DocumentoFactory documentoFactory = new DocumentoFactory();
+		
 		if(format == pdf_id.getId()) {
-			tipo="pdf";
+			tipo="PDF";
+			Documento documento = documentoFactory.getDocumento(tipo);
+			documento.createDocument(it);
 		}else {
-			tipo="doc";
+			tipo="DOCX";
+			Documento documento = documentoFactory.getDocumento(tipo);
+			documento.createDocument(it);
 		}
 		System.out.println("L'utente ha scelto di scaricare il formato: "+tipo );
+		
+		//TODO PASQUALE 
+		
+		
 		return;
 	}
 
@@ -102,6 +131,6 @@ public class EffectiveDownloadController implements GenericController {
 		doc_btn.setFitHeight(100);
 	}
 	
-	
+
 	
 }

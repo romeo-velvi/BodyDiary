@@ -34,4 +34,6 @@ public abstract class DBdao {
 	
 	public abstract Iterator retreiveGoal(String email) throws SQLException;
 	
+	public abstract Iterator getLast7Measurement(String email) throws SQLException;
+	
 }

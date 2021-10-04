@@ -411,5 +411,55 @@ public class DerbydbClass extends DBdao{
 		return it;
 	}
 
+	@Override
+	public Iterator getLast7Measurement(String email) throws SQLException {
+		String query = "SELECT "
+				+"date		,"
+				+"weight 	,"
+				+"thighs 	    ,"
+				+"chest 	,"
+				+"height 	,"
+				+"forearms  ,"
+				+"biceps 	,"
+				+"hips 	    ,"
+				+"waistline ,"
+				+"calfs 	" 
+				+" FROM USERMEASURE WHERE EMAIL="
+				+ "'"+email+"'"
+				+ " ORDER BY date DESC FETCH FIRST 7 ROW ONLY";
+		Statement stmt = to_db.createStatement();
+		
+		Aggregate aggregate = new ConcreteAggregate();
+		
+		Date d;
+		Double weight;    
+		Double thighs	;	  
+		Double chest; 	  
+		Double height; 	  
+		Double forearms;  
+		Double biceps; 	  
+		Double hips	;	  
+		Double waistlin; 
+		Double calfs; 
+		
+		ResultSet rs = stmt.executeQuery(query);
+		while(rs.next()) {
+			d = rs.getDate("date");
+			weight = rs.getDouble("weight");  
+			thighs =	rs.getDouble("thighs");	
+			chest=	rs.getDouble("chest"); 	
+			height=	rs.getDouble("height"); 	
+			forearms=	rs.getDouble("forearms");
+			biceps=	rs.getDouble("biceps"); 	
+			hips=	rs.getDouble("hips")	;	
+			waistlin=	rs.getDouble("waistline");
+			calfs=	rs.getDouble("calfs");  
+		
+			aggregate.add(new Measurement(email, weight, thighs, chest, height, forearms, biceps, hips, waistlin, calfs,d));
+		}
+		Iterator it = aggregate.createIterator();
+		return it;
+	}
+	
 
 }

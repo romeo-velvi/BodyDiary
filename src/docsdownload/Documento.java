@@ -1,5 +1,8 @@
 package docsdownload;
 
+import database.Iterator;
+
 public interface Documento {
-	public void createDocument();
+	public void createDocument(Iterator it);
+	
 }
