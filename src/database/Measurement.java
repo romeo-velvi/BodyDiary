@@ -8,7 +8,7 @@ public class Measurement {
 	private String email; 
 	private Date date;
 	private Double weight;
-	private Double legs;	
+	private Double thighs;	
 	private Double chest; 	
 	private Double height; 	
 	private Double forearms; 
@@ -29,7 +29,7 @@ public class Measurement {
 
 	@Override
 	public String toString() {
-		return "Measurement [mail=" + email + ", date=" + date + ", weight=" + weight + ", legs=" + legs + ", chest="
+		return "Measurement [mail=" + email + ", date=" + date + ", weight=" + weight + ", thighs=" + thighs + ", chest="
 				+ chest + ", height=" + height + ", forearms=" + forearms + ", biceps=" + biceps + ", hips=" + hips
 				+ ", waistline=" + waistline + ", calfs=" + calfs + "]";
 	}
@@ -40,8 +40,8 @@ public class Measurement {
 		case "weight":
 			d=this.getWeight();
 			break;
-		case "legs":
-			d=this.getLegs();
+		case "thighs":
+			d=this.getThighs();
 			break;
 		case "chest":
 			d=this.getChest();
@@ -73,12 +73,12 @@ public class Measurement {
 
 	public Measurement () {	}
 	
-	public Measurement(String email, Double weight, Double legs, Double chest, Double height, Double forearms, Double biceps,
+	public Measurement(String email, Double weight, Double thighs, Double chest, Double height, Double forearms, Double biceps,
 			Double hips, Double waistline, Double calfs, Date d) {
 		super();
 		this.email = email;
 		this.weight = weight;
-		this.legs = legs;
+		this.thighs = thighs;
 		this.chest = chest;
 		this.height = height;
 		this.forearms = forearms;
@@ -110,13 +110,13 @@ public class Measurement {
 	}
 
 
-	public Double getLegs() {
-		return legs;
+	public Double getThighs() {
+		return thighs;
 	}
 
 
-	public void setLegs(Double legs) {
-		this.legs = legs;
+	public void setThighs(Double thighs) {
+		this.thighs = thighs;
 	}
 
 

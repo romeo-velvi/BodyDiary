@@ -58,7 +58,7 @@ public class Main_db_sample {
 		
 		/* ADD USER MEASURE */
 		Double weight	= 1.1	;    
-		Double legs		= 1.1	;	  
+		Double thighs		= 1.1	;	  
 		Double chest	= 1.1	; 	  
 		Double height	= 1.1	; 	  
 		Double forearms	= 1.1	;  
@@ -66,11 +66,11 @@ public class Main_db_sample {
 		Double hips		= 1.1	;	  
 		Double waistline = 1.1	; 
 		Double calfs	 = 1.1	; 	  
-		Measurement mm = new Measurement(mail, weight, legs, chest, height, forearms, biceps, hips, waistline, calfs, Date.valueOf("2012-12-12"));
+		Measurement mm = new Measurement(mail, weight, thighs, chest, height, forearms, biceps, hips, waistline, calfs, Date.valueOf("2012-12-12"));
 		db.insertUserMeasurement(mm);
 		//2
 		 weight	= 21.1	;    
-		 legs		= 21.1	;	  
+		 thighs		= 21.1	;	  
 		 chest	= 21.1	; 	  
 		 height	= 21.1	; 	  
 		 forearms	= 21.1	;  
@@ -78,7 +78,7 @@ public class Main_db_sample {
 		 hips		= 21.1	;	  
 		 waistline = 21.1	; 
 		 calfs	 = 21.1	; 	  
-		mm = new Measurement(mail, weight, legs, chest, height, forearms, biceps, hips, waistline, calfs, Measurement.getCurrentTime());
+		mm = new Measurement(mail, weight, thighs, chest, height, forearms, biceps, hips, waistline, calfs, Measurement.getCurrentTime());
 		db.insertUserMeasurement(mm);
 		
 		/* RETREIVE ALL MEASUREMENT */

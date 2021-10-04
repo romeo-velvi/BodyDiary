@@ -39,7 +39,6 @@ public class EffectiveAntropomController implements GenericController {
 	
     @FXML
     public void initialize(){ // setta variabili al caricamento della pagina
-		// TODO foreach measurement, calculate and drow a line chart
 		SetChart();
     }
     
@@ -61,7 +60,7 @@ public class EffectiveAntropomController implements GenericController {
     	XYChart.Series series4 = new XYChart.Series();   
     	
     	/* 
-		 * Double weight, Double legs, 
+		 * Double weight, Double thighs, 
 		 * Double chest, Double height, 
 		 * Double forearms, Double biceps
 		 * Double hips, Double waistline, 
@@ -77,7 +76,7 @@ public class EffectiveAntropomController implements GenericController {
     	Measurement mes;
 		while (it.hasNext()) {
 			mes= (Measurement)it.next();
-			series1.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),calculateFatMass(UserData.getInstance().getGender(), mes.getWaistline(), mes.getLegs(), mes.getHips(), mes.getHeight())));
+			series1.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),calculateFatMass(UserData.getInstance().getGender(), mes.getWaistline(), mes.getThighs(), mes.getHips(), mes.getHeight())));
 			series2.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),calculateLeanMass(UserData.getInstance().getGender(), mes.getWeight(), mes.getHeight())));
 			series3.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHeight()/mes.getHeight()));
 			series4.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHeight()/mes.getHeight()));

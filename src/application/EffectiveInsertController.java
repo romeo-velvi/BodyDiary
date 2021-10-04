@@ -35,7 +35,7 @@ public class EffectiveInsertController implements GenericController {
 	private TextField hipsx;
 	
 	@FXML
-	private TextField legsx;
+	private TextField thighsx;
 	
 	@FXML
 	private TextField waistlinex;
@@ -79,7 +79,7 @@ public class EffectiveInsertController implements GenericController {
 	
     @FXML
     void OnButtonInsertPressed(ActionEvent event) throws Exception{
-    	Double biceps, calfs, chest, forearms, height, hips, legs, waistline, weight ;
+    	Double biceps, calfs, chest, forearms, height, hips, thighs, waistline, weight ;
     	Date d;
     	
     	try {
@@ -89,7 +89,7 @@ public class EffectiveInsertController implements GenericController {
 	    	forearms  = Double.parseDouble(forearmsx.getText());
 	    	height    = Double.parseDouble(heightx.getText());
 	    	hips      = Double.parseDouble(hipsx.getText());
-	    	legs      = Double.parseDouble(legsx.getText());
+	    	thighs      = Double.parseDouble(thighsx.getText());
 	    	waistline = Double.parseDouble(waistlinex.getText());
 	    	weight    = Double.parseDouble(weightx.getText());
 	    	d		  = Measurement.getCurrentTime();
@@ -101,7 +101,7 @@ public class EffectiveInsertController implements GenericController {
     	ops_text.setVisible(false);
     	
     	
-    	Measurement mm = new Measurement(UserData.getInstance().getMail(), weight, legs, chest, height, forearms, biceps, hips, waistline, calfs, d);
+    	Measurement mm = new Measurement(UserData.getInstance().getMail(), weight, thighs, chest, height, forearms, biceps, hips, waistline, calfs, d);
     	
     	DBdao db = new DerbydbClass();
     	
@@ -114,7 +114,7 @@ public class EffectiveInsertController implements GenericController {
     			+ "\n forearms =" + mm.getForearms() 
     			+ "\n height   =" + mm.getHeight()   
     			+ "\n hips     =" + mm.getHips()     
-    			+ "\n legs     =" + mm.getLegs()     
+    			+ "\n thighs     =" + mm.getThighs()     
     			+ "\n waistline=" + mm.getWaistline()
     			+ "\n weight   =" + mm.getWeight()   
     			+ "\n il giorno = " + mm.getDate()

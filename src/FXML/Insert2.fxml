@@ -88,7 +88,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="weightx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="weightx" prefHeight="44.0" prefWidth="150.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text=" kg">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -110,7 +110,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="heightx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="heightx" prefHeight="44.0" prefWidth="150.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text=" m">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -132,7 +132,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="hipsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="hipsx" prefHeight="44.0" prefWidth="150.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -147,14 +147,14 @@
       </VBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <Label prefHeight="29.0" prefWidth="254.0" text="Legs">
+            <Label prefHeight="29.0" prefWidth="254.0" text="Thighs">
                <font>
                   <Font name="Malgun Gothic Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="legsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="thighsx" prefHeight="44.0" prefWidth="150.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -176,7 +176,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="forearmsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="forearmsx" prefHeight="44.0" prefWidth="150.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -198,7 +198,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="waistlinex" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="waistlinex" prefHeight="44.0" prefWidth="150.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -220,7 +220,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="chestx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="chestx" prefHeight="44.0" prefWidth="150.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -242,7 +242,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="bicepsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="bicepsx" prefHeight="44.0" prefWidth="150.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />
@@ -264,7 +264,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="calfsx" prefHeight="44.0" prefWidth="163.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
+                  <TextField fx:id="calfsx" prefHeight="44.0" prefWidth="150.0" promptText="measure" style="-fx-alignment: center; -fx-font-size: 23;" />
                   <Label text=" cm">
                      <font>
                         <Font name="Malgun Gothic" size="23.0" />

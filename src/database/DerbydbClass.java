@@ -109,7 +109,7 @@ public class DerbydbClass extends DBdao{
 					+ "email 	VARCHAR(255) NOT NULL,"
 					+ "date			DATE NOT NULL,"
 					+ "weight 		DOUBLE NOT NULL ,"
-					+ "legs 		DOUBLE NOT NULL ,"
+					+ "thighs 		DOUBLE NOT NULL ,"
 					+ "chest 		DOUBLE NOT NULL ,"
 					+ "height 		DOUBLE NOT NULL ,"
 					+ "forearms 	DOUBLE NOT NULL ,"
@@ -172,7 +172,7 @@ public class DerbydbClass extends DBdao{
 					+"email 	,"
 					+"date		,"
 					+"weight 	,"
-					+"legs 	    ,"
+					+"thighs 	    ,"
 					+"chest 	,"
 					+"height 	,"
 					+"forearms  ,"
@@ -193,7 +193,7 @@ public class DerbydbClass extends DBdao{
 					+ ","
 						+ mm.getWeight()
 					+ ","
-						+ mm.getLegs()
+						+ mm.getThighs()
 					+ ","
 						+ mm.getChest()
 					+ ","
@@ -289,7 +289,7 @@ public class DerbydbClass extends DBdao{
 		String query = "SELECT "
 				+"date		,"
 				+"weight 	,"
-				+"legs 	    ,"
+				+"thighs 	    ,"
 				+"chest 	,"
 				+"height 	,"
 				+"forearms  ,"
@@ -305,7 +305,7 @@ public class DerbydbClass extends DBdao{
 		
 		Date d;
 		Double weight;    
-		Double legs	;	  
+		Double thighs	;	  
 		Double chest; 	  
 		Double height; 	  
 		Double forearms;  
@@ -317,7 +317,7 @@ public class DerbydbClass extends DBdao{
 		rs.next();
 		d = rs.getDate("date");
 		weight = rs.getDouble("weight");  
-		legs =	rs.getDouble("legs");	
+		thighs =	rs.getDouble("thighs");	
 		chest=	rs.getDouble("chest"); 	
 		height=	rs.getDouble("height"); 	
 		forearms=	rs.getDouble("forearms");
@@ -326,9 +326,9 @@ public class DerbydbClass extends DBdao{
 		waistlin=	rs.getDouble("waistline");
 		calfs=	rs.getDouble("calfs");  
 		
-		m = new Measurement(email, weight, legs, chest, height, forearms, biceps, hips, waistlin, calfs, d);
+		m = new Measurement(email, weight, thighs, chest, height, forearms, biceps, hips, waistlin, calfs, d);
 		/* 
-		 * Double weight, Double legs, 
+		 * Double weight, Double thighs, 
 		 * Double chest, Double height, 
 		 * Double forearms, Double biceps
 		 * Double hips, Double waistline, 
@@ -341,7 +341,7 @@ public class DerbydbClass extends DBdao{
 		String query = "SELECT "
 				+"date		,"
 				+"weight 	,"
-				+"legs 	    ,"
+				+"thighs 	    ,"
 				+"chest 	,"
 				+"height 	,"
 				+"forearms  ,"
@@ -358,7 +358,7 @@ public class DerbydbClass extends DBdao{
 		
 		Date d;
 		Double weight;    
-		Double legs	;	  
+		Double thighs	;	  
 		Double chest; 	  
 		Double height; 	  
 		Double forearms;  
@@ -371,7 +371,7 @@ public class DerbydbClass extends DBdao{
 		while(rs.next()) {
 			d = rs.getDate("date");
 			weight = rs.getDouble("weight");  
-			legs =	rs.getDouble("legs");	
+			thighs =	rs.getDouble("thighs");	
 			chest=	rs.getDouble("chest"); 	
 			height=	rs.getDouble("height"); 	
 			forearms=	rs.getDouble("forearms");
@@ -380,7 +380,7 @@ public class DerbydbClass extends DBdao{
 			waistlin=	rs.getDouble("waistline");
 			calfs=	rs.getDouble("calfs");  
 		
-			aggregate.add(new Measurement(email, weight, legs, chest, height, forearms, biceps, hips, waistlin, calfs,d));
+			aggregate.add(new Measurement(email, weight, thighs, chest, height, forearms, biceps, hips, waistlin, calfs,d));
 		}
 		Iterator it = aggregate.createIterator();
 		return it;

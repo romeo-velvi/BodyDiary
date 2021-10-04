@@ -114,38 +114,11 @@ public class EffectiveGoalsController implements GenericController {
 		
 		list_goals.getItems().addAll(goals_elem);
 		
-		/*
-		Goal_old g1 =null,g2=null,g3=null,g4=null,g5=null,g6=null,g7=null;
-		try {
-			g1 = new Goal_old("biceps", Date.valueOf("2021-05-01"), 11.43  , 112.43);
-			g2 = new Goal_old("calfs", Date.valueOf("2021-06-01"), 12.43  , 156.43);
-			g3 = new Goal_old("height", Date.valueOf("2021-07-01"), 14.43 , 17.43);
-			g4 = new Goal_old("legs", Date.valueOf("2021-08-01"), 15.43 , 137.43);
-			g5 = new Goal_old("biceps", Date.valueOf("2021-08-01"), 17.43 , 17.43);
-			g6 = new Goal_old("hips", Date.valueOf("2021-05-01"), 11.43 , 17.43);
-			g7 = new Goal_old("weight", Date.valueOf("2021-09-01"), 111.43 , 111.43);
-		}
-		catch (Exception e) {
-			System.out.println("problem set list: "+e);
-		}
-		
-		goals_elem.removeAll(goals_elem);
-		
-		goals_elem.add(g1.toString());
-		goals_elem.add(g2.toString());
-		goals_elem.add(g3.toString());
-		goals_elem.add(g4.toString());
-		goals_elem.add(g5.toString());
-		goals_elem.add(g6.toString());
-		goals_elem.add(g7.toString());
-		list_goals.getItems().addAll(goals_elem);
-		*/	
-		
 	}
 	
 	private void loadChoiceBox() {
 		/* 
-		 * Double weight, Double legs, 
+		 * Double weight, Double thighs, 
 		 * Double chest, Double height, 
 		 * Double forearms, Double biceps
 		 * Double hips, Double waistline, 
@@ -154,7 +127,7 @@ public class EffectiveGoalsController implements GenericController {
 		measure.removeAll(measure);
 		measure.addAll(
 				"weight",
-				"legs",
+				"thighs",
 				"chest",
 				"height",
 				"forearms",
