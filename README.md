@@ -1,3 +1,4 @@
+
 <H1 align="center">PROG3 PROJECT</H1>
 <!--  README  -->
 
@@ -91,7 +92,12 @@ You need to have java installed on your system. You can get the java from [here]
   ```sh
   $ git clone https://github.com/velvi-stud/Prog3
   ```
-2. Open the foalder and launch the program, or alternatively, you can run directly the ```BodyDiary.exe``` in the repo.
+2. Open the foalder in a project IDE and make sure to set in run configuration VM Arguments the line :
+``` 
+--module-path ".\lib\javafx-sdk-17.0.0.1\lib" --add-modules=javafx.controls,javafx.fxml
+``` 
+3. And launch the program using that configuration. 
+4. Alternatively, you can run directly the ```BodyDiary.exe``` in the repo.
 
 
 
