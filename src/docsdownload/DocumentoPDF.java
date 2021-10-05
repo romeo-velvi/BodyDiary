@@ -46,7 +46,7 @@ public class DocumentoPDF implements Documento{
 					.setBorder(Border.NO_BORDER)
 					);
 
-			table.addCell(new Cell().add(new Paragraph("Data Download\n 01/10/2021\n"))
+			table.addCell(new Cell().add(new Paragraph("Data Download\n"+ Measurement.getCurrentTime() +"\n"))
 					.setTextAlignment(TextAlignment.RIGHT)
 					.setMarginTop(50f)
 					.setMarginBottom(50f)
