@@ -145,6 +145,11 @@ public class EffectiveGoalsController implements GenericController {
 		String type; Double x; Date dd;
 		try {
 			type = choice_measure.getValue();
+			if(type == null || type.equals("null")) {
+				System.out.println("Errore, selezionare tipo");
+				ops_text.setVisible(true);
+				return;
+			}
 			x = Double.parseDouble(goals_value.getText());
 			dd = Goal.getCurrentTime();
 		}catch (Exception e) {

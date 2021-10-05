@@ -217,23 +217,64 @@ public class DerbydbClass extends DBdao{
 	}
 	
 	public  Boolean insertUserGoal(Goal gg) throws SQLException {
-		String query="INSERT INTO UserGoals"
-				+ "(email,date,type,goal)"
-				+ "VALUES "
-				+ "('"
-					+gg.getEmail()
-					+"','"
-					+gg.getData_immissione()
-					+"','"
-					+gg.getTipo()
-					+"',"
-					+gg.getValue_atteso()
-				+")";
-		if(executeQuery(query)==false) {
-			System.out.println("Errore inserimento user goals: ");
+		
+		String query1 = "SELECT COUNT(*) as OK FROM USERGOALS WHERE "
+				+ " Type = "
+				+ "'"+gg.getTipo()+"'";
+		Statement stmt; ResultSet rs; int x=0;
+		try {
+			stmt = to_db.createStatement();
+			rs= stmt.executeQuery(query1);
+			rs.next();
+			x =  rs.getInt("ok");
+		} catch (SQLException e) {
+			System.out.println("Error taking data goal: "+e);
 			return false;
 		}
-		return true;
+		
+		
+		String query2;
+		if(x==1) { //esiste -> update
+			
+			query2="UPDATE UserGoals"
+					+ " SET "
+					+ " date = '"+ gg.getData_immissione() +"',"
+					+ " goal = "+  gg.getValue_atteso() +""
+					+ " Where "
+					+ " type = '"+gg.getTipo()+"'";
+			if(executeQuery(query2)==false) {
+				System.out.println("Errore inserimento user goals1: ");
+				return false;
+			}
+			return true;
+			
+			
+		}
+		else {// non esiste -> insert
+			
+			query2="INSERT INTO UserGoals"
+					+ "(email,date,type,goal)"
+					+ "VALUES "
+					+ "('"
+						+gg.getEmail()
+						+"','"
+						+gg.getData_immissione()
+						+"','"
+						+gg.getTipo()
+						+"',"
+						+gg.getValue_atteso()
+					+")";
+			if(executeQuery(query2)==false) {
+				System.out.println("Errore inserimento user goals2: ");
+				return false;
+			}
+			return true;
+			
+		}
+		
+		
+		
+		
 	}
 	
 	public Boolean checkUser(String email, String pass) {

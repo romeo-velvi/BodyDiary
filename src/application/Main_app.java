@@ -11,7 +11,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
- 
+
+/*
+C:\Users\Velvi\eclipse-workspace\JFX4project1>ij
+Versione ij 10.15
+ij> CONNECT 'jdbc:derby:C:\Users\Velvi\eclipse-workspace\JFX4project1\newDBderby;';
+ij> show tables 
+*/
+
+
 @SuppressWarnings("unused")
 public class Main_app extends Application {
     public static void main(String[] args) {
