@@ -76,25 +76,30 @@ public class EffectiveDownloadController implements GenericController {
 			return;
 		}
 		
-		ToggleButton selformat = (ToggleButton)choice_download.getSelectedToggle();
-		String format = selformat.getId();
-		String tipo = null;
-		DocumentoFactory documentoFactory = new DocumentoFactory();
-		
-		if(format == pdf_id.getId()) {
-			tipo="PDF";
-			Documento documento = documentoFactory.getDocumento(tipo);
-			documento.createDocument(it);
-		}else {
-			tipo="DOCX";
-			Documento documento = documentoFactory.getDocumento(tipo);
-			documento.createDocument(it);
+    	String tipo=null;
+    	try {
+			ToggleButton selformat = (ToggleButton)choice_download.getSelectedToggle();
+			String format = selformat.getId();
+			DocumentoFactory documentoFactory = new DocumentoFactory();
+			
+			if(format == pdf_id.getId()) {
+				tipo="PDF";
+				Documento documento = documentoFactory.getDocumento(tipo);
+				documento.createDocument(it);
+			}else {
+				tipo="DOCX";
+				Documento documento = documentoFactory.getDocumento(tipo);
+				documento.createDocument(it);
+			}
+						
+    	}catch (Exception e) {
+			System.out.println("Problema scaricamento file " +tipo);
+			return;
 		}
-		System.out.println("L'utente ha scelto di scaricare il formato: "+tipo );
-		
-		//TODO PASQUALE 
-		
-		
+    	System.out.println("file "+tipo+" scaricato");
+    	window = (Stage)((Node)event.getSource()).getScene().getWindow();
+		window.close();
+    	
 		return;
 	}
 
