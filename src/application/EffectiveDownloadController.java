@@ -12,6 +12,7 @@ import docsdownload.Documento;
 import docsdownload.DocumentoFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -68,6 +69,9 @@ public class EffectiveDownloadController implements GenericController {
 
 	public void OnButtonDownloadPressed(ActionEvent event) {
 		
+		window = (Stage)((Node)event.getSource()).getScene().getWindow();
+		window.getScene().setCursor(Cursor.WAIT);
+		
     	database.Iterator it = null;
     	try {
 			it = db.getLast7Measurement(UserData.getInstance().getMail());
@@ -97,7 +101,7 @@ public class EffectiveDownloadController implements GenericController {
 			return;
 		}
     	System.out.println("file "+tipo+" scaricato");
-    	window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	
 		window.close();
     	
 		return;

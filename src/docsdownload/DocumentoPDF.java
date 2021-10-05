@@ -46,7 +46,7 @@ public class DocumentoPDF implements Documento{
 					.setBorder(Border.NO_BORDER)
 					);
 
-			table.addCell(new Cell().add(new Paragraph("Data Download\n"+ Measurement.getCurrentTime() +"\n"))
+			table.addCell(new Cell().add(new Paragraph("Download date\n"+ Measurement.getCurrentTime() +"\n"))
 					.setTextAlignment(TextAlignment.RIGHT)
 					.setMarginTop(50f)
 					.setMarginBottom(50f)
@@ -58,17 +58,17 @@ public class DocumentoPDF implements Documento{
 			float colWidth[] = {80, 300, 100, 80};
 			Table customerInfoTable = new Table(columnWidth);
 
-			customerInfoTable.addCell(new Cell(0,4).add(new Paragraph("Informazioni Utente"))
+			customerInfoTable.addCell(new Cell(0,4).add(new Paragraph("User Indormation"))
 					.setBold()
 					.setBorder(Border.NO_BORDER)
 					);
 
-			customerInfoTable.addCell(new Cell().add(new Paragraph("Nome:"))
+			customerInfoTable.addCell(new Cell().add(new Paragraph("Name:"))
 					.setBorder(Border.NO_BORDER)
 					);
 			customerInfoTable.addCell(new Cell().add(new Paragraph(UserData.getInstance().getName()))
 					.setBorder(Border.NO_BORDER));
-			customerInfoTable.addCell(new Cell().add(new Paragraph("Cognome:"))
+			customerInfoTable.addCell(new Cell().add(new Paragraph("Surname:"))
 					.setBorder(Border.NO_BORDER));
 			customerInfoTable.addCell(new Cell().add(new Paragraph(UserData.getInstance().getSurname()))
 					.setBorder(Border.NO_BORDER));
@@ -78,12 +78,12 @@ public class DocumentoPDF implements Documento{
 			customerInfoTable.addCell(new Cell().add(new Paragraph(UserData.getInstance().getMail()))
 					.setBorder(Border.NO_BORDER));
 			
-			customerInfoTable.addCell(new Cell().add(new Paragraph("Data di nascita"))
+			customerInfoTable.addCell(new Cell().add(new Paragraph("Birth date"))
 					.setBorder(Border.NO_BORDER));
 			customerInfoTable.addCell(new Cell().add(new Paragraph(String.valueOf(UserData.getInstance().getBirt_date())))
 					.setBorder(Border.NO_BORDER));
 
-			customerInfoTable.addCell(new Cell().add(new Paragraph("Sesso"))
+			customerInfoTable.addCell(new Cell().add(new Paragraph("Gender"))
 					.setBorder(Border.NO_BORDER));
 			customerInfoTable.addCell(new Cell().add(new Paragraph(UserData.getInstance().getGender()))
 					.setBorder(Border.NO_BORDER));
@@ -106,11 +106,11 @@ public class DocumentoPDF implements Documento{
 				
 				itemInfoTable = new Table(itemInfoWidth);
 
-				itemInfoTable.addCell(new Cell().add(new Paragraph("Tipo"))
+				itemInfoTable.addCell(new Cell().add(new Paragraph("Type"))
 						.setBackgroundColor(new DeviceRgb(63,169,219))
 						.setFontColor(ColorConstants.WHITE)
 						);
-				itemInfoTable.addCell(new Cell().add(new Paragraph("Valore"))
+				itemInfoTable.addCell(new Cell().add(new Paragraph("Value"))
 						.setBackgroundColor(new DeviceRgb(63,169,219))
 						.setFontColor(ColorConstants.WHITE));
 				
@@ -149,7 +149,7 @@ public class DocumentoPDF implements Documento{
 						.setFontColor(ColorConstants.WHITE)
 						.setBorder(Border.NO_BORDER)
 						);
-				itemInfoTable.addCell(new Cell().add(new Paragraph("Data misurazione: " + String.valueOf(mes.getDate())))
+				itemInfoTable.addCell(new Cell().add(new Paragraph("Measuration date: " + String.valueOf(mes.getDate())))
 						.setTextAlignment(TextAlignment.CENTER)
 						.setBackgroundColor(new DeviceRgb(63,169,219))
 						.setFontColor(ColorConstants.WHITE)
@@ -159,12 +159,6 @@ public class DocumentoPDF implements Documento{
 				document.add(itemInfoTable);
 				document.add(new Paragraph("\n"));
 			}
-			
-
-
-
-
-		
 			
 			
 			document.close();
