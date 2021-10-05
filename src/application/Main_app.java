@@ -29,16 +29,9 @@ public class Main_app extends Application {
 		stage.setHeight(600);
 		stage.setResizable(false);
 		
-//    	Parent root = FXMLLoader.load(getClass().getResource("../FXML/Start2.fxml")); 
-//		Scene scene = new Scene(root);
-//		stage.setScene(scene);
-		
-		
 		GenericController g = new ProxyStartController();
 		g.launch(stage);
-		
-		//stage.show();
-		
+
     }
 }
 

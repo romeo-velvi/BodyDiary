@@ -47,7 +47,6 @@ public class DerbydbClass extends DBdao{
 		return true;
 	}
 	
-	//@SuppressWarnings("unused")
 	public void clearTable(String tablename) throws SQLException {
 		String query; 
 		query="DELETE FROM "+ tablename;
@@ -249,7 +248,7 @@ public class DerbydbClass extends DBdao{
 		try {
 			stmt = to_db.createStatement();
 			rs= stmt.executeQuery(query);
-			rs.next(); // ESEGUIRE SEMPRE IL NEXT PER PRIMO !!
+			rs.next();
 			x =  rs.getInt("ok");
 		} catch (SQLException e) {
 			System.out.println("Error login data: "+e);
@@ -327,13 +326,7 @@ public class DerbydbClass extends DBdao{
 		calfs=	rs.getDouble("calfs");  
 		
 		m = new Measurement(email, weight, thighs, chest, height, forearms, biceps, hips, waistlin, calfs, d);
-		/* 
-		 * Double weight, Double thighs, 
-		 * Double chest, Double height, 
-		 * Double forearms, Double biceps
-		 * Double hips, Double waistline, 
-		 * Double calfs, Date d	
-		 */	
+
 		return m;
 	}
 	

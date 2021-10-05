@@ -33,7 +33,6 @@ public class DocumentoDOCX implements Documento{
         	run.setFontSize(28);
         	run.setColor("0394fc");
         	run.setBold(true);
-        	//run.addBreak(BreakType.TEXT_WRAPPING);
         	XWPFTable [] tab = new XWPFTable[10];
         	
         	

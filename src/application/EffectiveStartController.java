@@ -26,7 +26,7 @@ public class EffectiveStartController implements GenericController {
 	@FXML Button singup_button;
 	
     @FXML
-    public void initialize(){ // setta variabili al caricamento della pagina
+    public void initialize(){
     	this.db = new DerbydbClass();
     	if(this.db.getConnection()==null) {
     		System.out.println("Problema connesione db ");
@@ -55,12 +55,12 @@ public class EffectiveStartController implements GenericController {
 	
 	public void OnButtonLoginPressed(ActionEvent event) throws Exception {
 		GenericController g = new ProxyLoginController();
-		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); // ritorna stage corrente per farlo aggiornare
+		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); 
 	}
 	
 	public void OnButtonSingupPressed(ActionEvent event) throws Exception {
 		GenericController g = new ProxySingupController();
-		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); // ritorna stage corrente per farlo aggiornare
+		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 	}
 	
 	

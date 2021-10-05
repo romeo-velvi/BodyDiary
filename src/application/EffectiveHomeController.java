@@ -84,14 +84,7 @@ public class EffectiveHomeController implements GenericController {
     	XYChart.Series series7 = new XYChart.Series();   
     	XYChart.Series series8 = new XYChart.Series();   
     	XYChart.Series series9 = new XYChart.Series();
-    	
-    	/* 
-		 * Double weight, Double thighs, 
-		 * Double chest, Double height, 
-		 * Double forearms, Double biceps
-		 * Double hips, Double waistline, 
-		 * Double calfs, Date d	
-		 */	
+  
     	
     	chart1.setTitle("Weight");
     	chart2.setTitle("Thigh");

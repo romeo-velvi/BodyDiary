@@ -99,15 +99,14 @@ public class EffectiveSingupController implements GenericController {
 			return;
 		}
 		
-		// REDIRECTION TO HOME
 		GenericController g = new ProxyLoginController();
-		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); // ritorna stage corrente per farlo aggiornare
+		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); 
 				
 	}
 	
 	public void OnButtonSinginPressed(MouseEvent event) throws Exception {
 		GenericController g = new ProxyLoginController();
-		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); // ritorna stage corrente per farlo aggiornare
+		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 	}
 	
 }

@@ -57,8 +57,6 @@ public class EffectiveLoginController implements GenericController {
 			ops_text.setVisible(false);
 			
 		}else {
-			//String errorm = ops_text.getText(); // to set error message: midded, mistake or connection problem
-			//ops_text.setText(errorm);
 			ops_text.setVisible(true);
 			return;
 		}
