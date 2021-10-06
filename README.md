@@ -97,8 +97,6 @@ You need to have java installed on your system. You can get the java from [here]
 --module-path ".\lib\javafx-sdk-17.0.0.1\lib" --add-modules=javafx.controls,javafx.fxml
 ``` 
 3. And launch the program using that configuration. 
-4. Alternatively, you can run directly the ```BodyDiary.exe``` in the repo.
-
 
 
 <!-- USAGE EXAMPLES -->
