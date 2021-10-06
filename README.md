@@ -94,7 +94,7 @@ You need to have java installed on your system. You can get the java from [here]
   ```
 2. Open the foalder in a project IDE and make sure to set in run configuration VM Arguments the line :
 ``` 
---module-path ".\lib\javafx-sdk-17.0.0.1\lib" --add-modules=javafx.controls,javafx.fxml
+--module-path ".\lib\javaFX-17.0.0.1\lib" --add-modules=javafx.controls,javafx.fxml
 ``` 
 3. And launch the program using that configuration. 
 
