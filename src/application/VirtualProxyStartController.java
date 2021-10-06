@@ -16,7 +16,7 @@ public class VirtualProxyStartController implements GenericController{
 	
 	public Stage launch(Stage s) throws Exception  {
 		this.stage = s;
-		EffectiveStartController ps = new EffectiveStartController();
+		GenericController ps = new EffectiveStartController();
 		preload();
 		stage = ps.launch(stage);
 		return stage;

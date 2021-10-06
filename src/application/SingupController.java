@@ -9,7 +9,7 @@ public class SingupController implements GenericController{
 	
 	public Stage launch(Stage s) throws Exception  {
 		this.stage = s;
-		EffectiveSingupController ps = new EffectiveSingupController();
+		GenericController ps = new EffectiveSingupController();
 		preload();
 		stage = ps.launch(stage);
 		return stage;

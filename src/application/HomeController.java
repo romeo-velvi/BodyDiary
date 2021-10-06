@@ -9,7 +9,7 @@ public class HomeController implements GenericController{
 	
 	public Stage launch(Stage s) throws Exception  {
 		this.stage = s;
-		EffectiveHomeController ps = new EffectiveHomeController();
+		GenericController ps = new EffectiveHomeController();
 		preload();
 		stage = ps.launch(stage);
 		return stage;

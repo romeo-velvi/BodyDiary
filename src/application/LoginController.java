@@ -8,7 +8,7 @@ public class LoginController implements GenericController{
 	
 	public Stage launch(Stage s) throws Exception  {
 		this.stage = s;
-		EffectiveLoginController ps = new EffectiveLoginController();
+		GenericController ps = new EffectiveLoginController();
 		preload();
 		stage = ps.launch(stage);
 		return stage;

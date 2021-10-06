@@ -9,7 +9,7 @@ public class GoalsController implements GenericController{
 	
 	public Stage launch(Stage s) throws Exception  {
 		this.stage = s;
-		EffectiveGoalsController ps = new EffectiveGoalsController();
+		GenericController ps = new EffectiveGoalsController();
 		preload();
 		stage = ps.launch(stage);
 		return stage;

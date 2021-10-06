@@ -9,7 +9,7 @@ public class DownloadController implements GenericController{
 	
 	public Stage launch(Stage s) throws Exception  {
 		this.stage = s;
-		EffectiveDownloadController ps = new EffectiveDownloadController();
+		GenericController ps = new EffectiveDownloadController();
 		preload();
 		stage = ps.launch(stage);
 		return stage;

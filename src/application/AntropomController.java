@@ -9,7 +9,7 @@ public class AntropomController implements GenericController{
 	
 	public Stage launch(Stage s) throws Exception  {
 		this.stage = s;
-		EffectiveAntropomController ps = new EffectiveAntropomController();
+		GenericController ps = new EffectiveAntropomController();
 		preload();
 		stage = ps.launch(stage);
 		return stage;

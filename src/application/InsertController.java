@@ -9,7 +9,7 @@ public class InsertController implements GenericController{
 	
 	public Stage launch(Stage s) throws Exception  {
 		this.stage = s;
-		EffectiveInsertController ps = new EffectiveInsertController();
+		GenericController ps = new EffectiveInsertController();
 		preload();
 		stage = ps.launch(stage);
 		return stage;
