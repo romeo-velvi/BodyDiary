@@ -55,13 +55,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-BodyDiary allows you to keep track of all the most important body measurements (weight, waist, hips, thighs, biceps and so on) on your PC. 
-What's more, you can immediately represent changes in your body stats over time, the data is automatically synchronized into DB and into graphs created.
-Work diligently on your training, the key to success is carefully monitoring your progress.
-BodyDiary is a body measure tracker, weight and body mass index tracker and much blackberries. This application allows you to keep track of all the body relevant measurements and store them all in a database.
-BodyDiary have some automatic antropometric calculator of body fat mass and lean mass percentage also height-waistline and waistline-hips ratio
-Using BodyDiary application you can graphically represent your progress immediately. What could be more motivating than seeing a graph of your waist shrinking week by week of intense waist training?
-Moreover BodyDiary can allow you to import a file (pdf or doc) containing the recent value of you measurement to your pc whit a simple click.
+BodyDiary is a management software application that allows you to keep track of all the most important body measurements such as weight, waist, hips, thighs, biceps and to calculate some anthropometric measures such as percentage of fat mass, percentage of lean mass, height-waist ratio and waist-hips. Giving the possibility to immediately visualize the changes of your body statistics over time, since the data is automatically synchronized in the DB and represented in the graphs created. It is also possible to download your information on files in pdf or docx format.
 
 
 
