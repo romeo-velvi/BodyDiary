@@ -168,12 +168,12 @@ public class EffectiveGoalsController implements GenericController {
 	}
 	
 	public void OnButtonHomePressed(MouseEvent event) throws Exception {
-		GenericController g = new ProxyHomeController();
+		GenericController g = new HomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 	}
 	
 	public void OnButtonHomePressed1(ActionEvent event) throws Exception {
-		GenericController g = new ProxyHomeController();
+		GenericController g = new HomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 	}
 }

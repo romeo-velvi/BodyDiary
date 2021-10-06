@@ -1,8 +1,10 @@
 package application;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
-
+import java.time.LocalDate;
+import java.time.Period;
 import database.DBdao;
 import database.DerbydbClass;
 import database.Measurement;
@@ -69,9 +71,9 @@ public class EffectiveAntropomController implements GenericController {
     	Measurement mes;
 		while (it.hasNext()) {
 			mes= (Measurement)it.next();
-			series1.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),calculateFatMass(UserData.getInstance().getGender(), mes.getWaistline(), mes.getThighs(), mes.getHips(), mes.getHeight())));
+			series1.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),calculateFatMass(UserData.getInstance().getGender(), mes.getWaistline(), mes.getThighs(), mes.getHips(), mes.getHeight(), mes.getWeight())));
 			series2.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),calculateLeanMass(UserData.getInstance().getGender(), mes.getWeight(), mes.getHeight())));
-			series3.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHeight()/mes.getHeight()));
+			series3.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHeight()/mes.getWaistline()));
 			series4.getData().add(new XYChart.Data(String.valueOf(mes.getDate()),mes.getHeight()/mes.getHeight()));
 			System.out.println(mes.toString());
 		}
@@ -83,13 +85,13 @@ public class EffectiveAntropomController implements GenericController {
     	
     }
     
-    private Double calculateFatMass(String gender, Double vita, Double gamba, Double fianchi, Double altezza) {
+    private Double calculateFatMass(String gender, Double vita, Double gamba, Double fianchi, Double altezza, Double peso) {
     	Double d = 0.0d;
     	if (gender.equals("female")) {
-    		d = 495/(1.29579 - 0.35004*(Math.log(vita+fianchi-gamba)) + 0.22100 *(Math.log(altezza)))-450;
+    		d = (1.46*(peso/(altezza*altezza))) + (0.14* ( getDataDiff(UserData.getInstance().getBirt_date(), Measurement.getCurrentTime()))) - 10;
     		return d;
     	}
-		d = 495/(1.0324 - 0.19077*(Math.log(vita-gamba)) + 0.15456*(Math.log(altezza)))-450;
+    	d = (1.46*(peso/(altezza*altezza))) + (0.14* ( getDataDiff(UserData.getInstance().getBirt_date(), Measurement.getCurrentTime()))) - 21.6;    	
     	return d;
     }
     
@@ -103,7 +105,12 @@ public class EffectiveAntropomController implements GenericController {
     	return d;
     }
     
-    
+    private int getDataDiff(Date bd, Date td) {
+    	LocalDate k = bd.toLocalDate();
+    	LocalDate x = td.toLocalDate();
+    	int diff = Period.between(k, x).getYears();
+    	return diff;
+    }
 	
 	public Stage launch(Stage s) {
 		this.stage = s;
@@ -124,13 +131,13 @@ public class EffectiveAntropomController implements GenericController {
     
     @FXML
     void OnButtonHomePressed(MouseEvent event) throws Exception {
-    	GenericController g = new ProxyHomeController();
+    	GenericController g = new HomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
     }
 
     @FXML
     void OnButtonHomePressed1(ActionEvent event) throws Exception {
-    	GenericController g = new ProxyHomeController();
+    	GenericController g = new HomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
     }
 

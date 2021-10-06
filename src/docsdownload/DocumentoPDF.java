@@ -1,10 +1,6 @@
 package docsdownload;
 
 import database.*;
-import application.*;
-
-import org.apache.xmlgraphics.util.uri.DataURIResolver;
-
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.geom.PageSize;

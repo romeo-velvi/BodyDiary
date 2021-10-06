@@ -37,7 +37,7 @@ public class Main_app extends Application {
 		stage.setHeight(600);
 		stage.setResizable(false);
 		
-		GenericController g = new ProxyStartController();
+		GenericController g = new VirtualProxyStartController();
 		g.launch(stage);
 
     }

@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import database.DBdao;
 import database.DerbydbClass;
-import database.UserData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -54,12 +53,12 @@ public class EffectiveStartController implements GenericController {
 	
 	
 	public void OnButtonLoginPressed(ActionEvent event) throws Exception {
-		GenericController g = new ProxyLoginController();
+		GenericController g = new LoginController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); 
 	}
 	
 	public void OnButtonSingupPressed(ActionEvent event) throws Exception {
-		GenericController g = new ProxySingupController();
+		GenericController g = new SingupController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 	}
 	

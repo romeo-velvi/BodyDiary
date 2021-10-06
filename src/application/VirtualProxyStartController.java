@@ -1,17 +1,10 @@
 package application;
 
-
-import java.sql.Date;
-import java.sql.SQLException;
-
 import database.DBdao;
 import database.DerbydbClass;
-import database.Goal;
-import database.Measurement;
-import database.UserData;
 import javafx.stage.Stage;
 
-public class ProxyStartController implements GenericController{
+public class VirtualProxyStartController implements GenericController{
 
 	private Stage stage;
 	DBdao db = new DerbydbClass();
@@ -25,6 +18,7 @@ public class ProxyStartController implements GenericController{
 	}
 	
 	private void preload() throws InterruptedException {
+		// COSA FARE PRIMA DEL CARICAMENTO DELLA PAGINA
 		System.out.println("Caricamento della pagina start");
 		Thread.sleep(3);
 		try {

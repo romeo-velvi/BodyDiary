@@ -66,13 +66,13 @@ public class EffectiveLoginController implements GenericController {
 		ud = db.retreiveUserData(mail, pass);
 		UserData.setInstance(ud);
 		
-		GenericController g = new ProxyHomeController();
+		GenericController g = new HomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); // ritorna stage corrente per farlo aggiornare
 		
 	}
 	
 	public void OnButtonSingupPressed(MouseEvent event) throws Exception {
-		GenericController g = new ProxySingupController();
+		GenericController g = new SingupController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow()); // ritorna stage corrente per farlo aggiornare
 	}
 	

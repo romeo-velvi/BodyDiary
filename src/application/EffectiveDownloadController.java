@@ -2,9 +2,6 @@ package application;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
-import com.itextpdf.layout.Document;
-
 import database.DBdao;
 import database.DerbydbClass;
 import database.UserData;

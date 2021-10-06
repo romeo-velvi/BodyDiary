@@ -67,13 +67,13 @@ public class EffectiveInsertController implements GenericController {
 
 	@FXML
     void OnButtonHomePressed(MouseEvent event) throws Exception{
-		GenericController g = new ProxyHomeController();
+		GenericController g = new HomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
     }
 
 	@FXML
     void OnButtonHomePressed1(ActionEvent event) throws Exception{
-    	GenericController g = new ProxyHomeController();
+    	GenericController g = new HomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
     }
 	
@@ -120,7 +120,7 @@ public class EffectiveInsertController implements GenericController {
     			+ "\n il giorno = " + mm.getDate()
     			);
     	
-    	GenericController g = new ProxyHomeController();
+    	GenericController g = new HomeController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
     }
 	

@@ -142,28 +142,28 @@ public class EffectiveHomeController implements GenericController {
 
 
 	public void OnButtonInsertPressed(ActionEvent event) throws Exception {
-		GenericController g = new ProxyInsertController();
+		GenericController g = new InsertController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 	}
 
 	public void OnButtonAntropomPressed(ActionEvent event) throws Exception {
-		GenericController g = new ProxyAntropomController();
+		GenericController g = new AntropomController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 	}
 
 	public void OnButtonGoalsPressed(ActionEvent event) throws Exception {
-		GenericController g = new ProxyGoalsController();
+		GenericController g = new GoalsController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 	}
 
 	public void OnButtonDownloadPressed(ActionEvent event) throws Exception{
-		GenericController g = new ProxyDownloadController();
+		GenericController g = new DownloadController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 	}
 
 	public void OnButtonExitPressed(MouseEvent event) throws Exception{
 		UserData.erease();
-		GenericController g = new ProxyStartController();
+		GenericController g = new VirtualProxyStartController();
 		g.launch((Stage)((Node)event.getSource()).getScene().getWindow());
 		UserData.erease();
 	}

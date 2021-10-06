@@ -4,8 +4,6 @@ import java.sql.SQLException;
 
 public abstract class DBdao {
 	
-	public abstract DerbydbClass getInstance();
-	
 	public abstract Connection getConnection();
 	
 	public abstract void setConnection(Connection to_db);
