@@ -133,7 +133,7 @@
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="goals_value" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" promptText="Imposta obiettivo" style="-fx-font-size: 18;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <TextField fx:id="goals_value" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" promptText="Set goal" style="-fx-font-size: 18;" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <font>
             <Font name="Malgun Gothic" size="18.0" />
          </font>
