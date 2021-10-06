@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 /*
 C:\Users\Velvi\eclipse-workspace\JFX4project1>ij
 Versione ij 10.15
-ij> CONNECT 'jdbc:derby:C:\Users\Velvi\eclipse-workspace\JFX4project1\newDBderby;';
+ij> CONNECT 'jdbc:derby:C:\Users\Velvi\eclipse-workspace\BodyDiary\newDBderby;';
 ij> show tables 
 */
 
