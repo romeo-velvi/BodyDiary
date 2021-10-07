@@ -1,4 +1,5 @@
 
+
 <H1 align="center">PROG3 PROJECT</H1>
 <!--  README  -->
 
@@ -60,7 +61,12 @@ BodyDiary is a management software application that allows you to keep track of 
 
 
 ### Built With
-This project was built using Java with DerbyDB as database.
+This project was built using:
+* Eclipse as IDE for java
+* SceneBuilder as FXML constructor
+* Drow_io to drow diagrams
+* DerbyDb to storage data
+
 User librery:
 - <b>JavaFX</b>: is an open source, next generation client application platform for desktop, mobile and embedded systems built on Java.  It is a collaborative effort by many individuals and companies with the goal of producing a modern, efficient, and fully featured toolkit for developing rich client applications. JavaFX also is used with <b>SceneBuilder</b> that is an open source tool that allows for drag and drop design of JavaFX user interfaces.platform for desktop, mobile and embedded systems built on Java.  It is a collaborative effort by many individuals and companies with the goal of producing a modern, efficient, and fully featured toolkit for developing rich client applications.
 - <b>DerbyDB</b>: is, an  [Apache DB subproject](http://db.apache.org/), is an open source relational database implemented entirely in Java and available under the  [Apache License, Version 2.0](http://db.apache.org/derby/license.html). Some key advantages include:
@@ -82,9 +88,9 @@ You need to have java installed on your system. You can get the java from [here]
 
 
 ### Installation
-1. Clone the repo on a specific folder
+1. Clone the repo on a specific folder (or open directly using Eclipse in File --> Import -> Git -> Projects from git -> Clone URI) usong following link
   ```sh
-  $ git clone https://github.com/velvi-stud/Prog3
+  $ https://github.com/velvi-stud/BodyDiary-Project.git
   ```
 2. Open the foalder in a project IDE and make sure to set in run configuration VM Arguments the line :
 ``` 
@@ -145,7 +151,7 @@ The Database used ```LearnFlow_mongoDB``` is composed by three tables
 Romeo Velvi - romeo.velvi001@studenti.uniparthenope.it <br>
 Pasquale Casoria - pasquale.casoria001@studenti.uniparthenope.it <br>
 
-Project Link: [https://github.com/velvi-stud/BodyDiary-Projec](https://github.com/velvi-stud/BodyDiary-Projec)
+Project Link: [https://github.com/velvi-stud/BodyDiary-Project](https://github.com/velvi-stud/BodyDiary-Projec)
 
 
 
