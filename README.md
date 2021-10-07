@@ -15,7 +15,7 @@
   <p align="center">
     <br />
     <a href="https://github.com/velvi-stud/Prog3">
-    <strong>Explore the docs »</strong></a>
+    <strong>Explore the docs Â»</strong></a>
     <br />
     <a href="https://github.com/velvi-stud/Prog3/issues">Report Bug</a>
     <br />
