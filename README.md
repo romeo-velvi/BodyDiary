@@ -14,7 +14,7 @@
   <p align="center">
     <br />
     <a href="https://github.com/velvi-stud/Prog3">
-    <strong>Explore the docs »</strong></a>
+    <strong>Explore the docs Â»</strong></a>
     <br />
     <a href="https://github.com/velvi-stud/Prog3/issues">Report Bug</a>
     <br />
@@ -145,7 +145,7 @@ The Database used ```LearnFlow_mongoDB``` is composed by three tables
 Romeo Velvi - romeo.velvi001@studenti.uniparthenope.it <br>
 Pasquale Casoria - pasquale.casoria001@studenti.uniparthenope.it <br>
 
-Project Link: [https://github.com/velvi-stud/Prog3](https://github.com/velvi-stud/LearnFlow-v2)
+Project Link: [https://github.com/velvi-stud/BodyDiary-Projec](https://github.com/velvi-stud/BodyDiary-Projec)
 
 
 
