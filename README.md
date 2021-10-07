@@ -6,7 +6,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/velvi-stud/Prog3">
-    <img src="/src/icons/icon.png" alt="Logo" width="126" height="126">
+    <img src="/src/icons/routine.png" alt="Logo" width="126" height="126">
   </a>
 </p>
   <h3 align="center">BodyDiary</h3>

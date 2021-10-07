@@ -31,8 +31,8 @@ public class VirtualProxyStartController implements GenericController{
 			// uncomment if there are no users -> testing 
 				// -> email = "raffmont@libero.it"; 	email = "angelociaramella@outlook.it";
 				// -> pass = "30lode";  				pass = "trenta";
-			population1();
-			population2();
+			//population1();
+			//population2();
 		}catch (Exception e) {
 			System.out.println("Creazione tabelle: "+e);
 		}

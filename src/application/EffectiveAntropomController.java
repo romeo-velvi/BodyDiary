@@ -46,7 +46,7 @@ public class EffectiveAntropomController implements GenericController {
     
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-	public void SetChart() {
+	private void SetChart() {
     	
     	database.Iterator it = null;
     	try {

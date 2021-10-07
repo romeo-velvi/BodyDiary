@@ -63,7 +63,7 @@
                   <Image url="@../icons/tape-measure.png" />
                </image>
             </ImageView>
-            <Label alignment="TOP_CENTER" contentDisplay="TOP" text="Antropometric Measuraments">
+            <Label alignment="TOP_CENTER" contentDisplay="TOP" text="Anthropometric Measurements">
                <font>
                   <Font name="Malgun Gothic Bold" size="25.0" />
                </font>
