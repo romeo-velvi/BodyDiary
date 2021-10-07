@@ -88,7 +88,7 @@ You need to have java installed on your system. You can get the java from [here]
 
 
 ### Installation
-1. Clone the repo on a specific folder (or open directly using Eclipse in File --> Import -> Git -> Projects from git -> Clone URI) usong following link
+1. Clone the repo on a specific folder (or open directly using Eclipse in File --> Import -> Git -> Projects from git -> Clone URI) using following link
   ```sh
   $ https://github.com/velvi-stud/BodyDiary-Project.git
   ```
