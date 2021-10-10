@@ -117,7 +117,7 @@ On the vertcal axis there are the values of the measure,  on the horizontal axis
 ## Element explanation
 
 ### DerbyDB schema
-The Database used ```LearnFlow_mongoDB``` is composed by three tables
+The Database used ```newDerbyDB``` is composed by three tables
 * ```UserData``` is the first table that store the user data such as:
     * Email
     * Name
