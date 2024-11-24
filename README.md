@@ -1,6 +1,6 @@
 
 
-<H1 align="center">PROG3 PROJECT</H1>
+<H1 align="center">BodyDiary PROJECT</H1>
 <!--  README  -->
 
 <!-- PROJECT LOGO -->
